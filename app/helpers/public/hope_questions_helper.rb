@@ -1,0 +1,2 @@
+module Public::HopeQuestionsHelper
+end
