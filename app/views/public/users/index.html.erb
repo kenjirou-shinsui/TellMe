@@ -1,0 +1,15 @@
+
+<strong>ユーザーリスト</strong>
+
+<table>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+		<td><%= user.first_name %><%= user.last_name %></td>
+		<td><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
+		<td><% unless current_user == user %>
+			<p>フォローどっちか</p></td>
+			<% end %>
+	</tr>
+	<% end %>
+</table>

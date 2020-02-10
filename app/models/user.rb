@@ -9,4 +9,6 @@ class User < ApplicationRecord
          has_many :metoos, dependent: :destroy
          has_many :hope_questions, dependent: :destroy
          has_many :answers, dependent: :destroy
+
+         attachment :profile_image
 end

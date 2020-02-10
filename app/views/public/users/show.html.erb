@@ -1,0 +1,12 @@
+
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %>
+
+<%= link_to "登録情報を変更する" ,edit_public_user_path(@user.id) %>
+
+<%= link_to "ユーザーリストへ" ,public_users_path %>
+<table>
+	<tr>
+		<td>Questions</td>
+		<td>Answers</td>
+	</tr>
+</table>

@@ -1,0 +1,16 @@
+
+<strong>Questions</strong>
+
+<table>
+	<% @questions.each do |question| %>
+	<tr>
+		<td>Q<%= question.id %>,<%= question.title %></td>
+			<% if question.answered_by?(current_user) %>
+        <td>u</td>
+        <% else %>
+        <td>A,未回答</td>
+		<td><%= link_to "回答する",new_public_question_answer_path(question.id) %>
+		<% end %>
+    </tr>
+	<% end %>
+</table>

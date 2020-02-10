@@ -1,0 +1,13 @@
+
+<strong>Question</strong>
+<div>
+	<p>Q<%= @question.id %>,<%= @question.title %></p>
+</div>
+
+<strong>Answer</strong>
+
+<%= form_for [:public, @question, @answer] do |f| %>
+			<div><%= f.text_area :body,:size=>"42" %></div>
+
+				<div><%= f.submit "送信する" %></div>
+				<% end %>
