@@ -1,0 +1,17 @@
+
+<strong>Questions</strong>
+
+<P><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></P>
+
+<table>
+<% @questions.each do |question| %>
+ 	<tr>
+ 		<td>Q<%= question.id %>,</td>
+ 		<td><%= question.title %></td>
+ 		<% if admin_signed_in? %>
+ 		<td><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
+ 		<td><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+ 		<% end %>
+ 	</tr>
+	<% end %>
+</table>

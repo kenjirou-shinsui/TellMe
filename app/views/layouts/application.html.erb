@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <header>
+      <storng>Tell Me</storng>
+      <% if admin_signed_in? %>
+      <nav>
+        <ul>
+          <li><%= link_to "会員一覧" ,admin_users_path %></li>
+          <li><%= link_to "質問一覧" ,admin_questions_path %></li>
+          <li><%= link_to "希望質問一覧" ,admin_hope_questions_path %></li>
+          <li><%= link_to "ログアウト" ,destroy_admin_session_path %></li>
+          </ul>
+        </nav>
+        <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

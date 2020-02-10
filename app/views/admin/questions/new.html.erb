@@ -1,0 +1,10 @@
+
+<strong>質問作成</strong>
+
+
+<P>Q<%= @question.id %></P>
+<%= form_for(@question, url:"/admin/questions") do |f| %>
+　<%= f.text_field :title, :size=>"42" %>
+　<div><%= f.submit '作成する' %></div>
+
+<% end %>

@@ -1,0 +1,10 @@
+
+<strong>質問編集</strong>
+
+<P>Q<%= @question.id %>,</P>
+
+<%= form_for(@question, url:"/admin/questions/#{@question.id}") do |f| %>
+　<%= f.text_field :title, :size=>"42" %>
+　<div><%= f.submit '更新する' %></div>
+
+<% end %>
