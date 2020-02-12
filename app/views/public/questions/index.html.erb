@@ -2,11 +2,14 @@
 <strong>Questions</strong>
 
 <table>
-	<% @questions.each do |question| %>
+	<% @all_questions.each do |question| %>
 	<tr>
 		<td>Q<%= question.id %>,<%= question.title %></td>
 			<% if question.answered_by?(current_user) %>
-        <td>u</td>
+        <td>A,<%= question.answers.where(user_id: current_user.id).first.body %></td>
+        <td><%= link_to "回答を編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
+        <td><%= link_to "回答を消去する",public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+        <td>Me too</td>
         <% else %>
         <td>A,未回答</td>
 		<td><%= link_to "回答する",new_public_question_answer_path(question.id) %>
@@ -14,3 +17,6 @@
     </tr>
 	<% end %>
 </table>
+
+<p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
+

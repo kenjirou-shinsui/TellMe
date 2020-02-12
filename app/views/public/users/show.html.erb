@@ -1,12 +1,36 @@
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+		<p>フォローリスト</p>
+		<p>フォロワーリスト</p>
+		<p>Me too一覧</p>
+		</div>
+		<div class="col-xs-10">
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %>
 
 <%= link_to "登録情報を変更する" ,edit_public_user_path(@user.id) %>
 
-<%= link_to "ユーザーリストへ" ,public_users_path %>
+<%= link_to "→ユーザーリストへ" ,public_users_path %>
 <table>
 	<tr>
 		<td>Questions</td>
 		<td>Answers</td>
 	</tr>
+	<% @answers.each do |answer| %>
+	<tr>
+		<td><%= answer.question.title %></td>
+		<td><%= answer.body %></td>
+		<td><%= link_to "編集する" ,edit_public_question_answer_path(answer.question.id,answer.id) %></td>
+		<td><%= link_to "消去する" ,public_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+		<td>Me too</td>
+	</tr>
+	<% end %>
 </table>
+
+<div>
+	<%= link_to "退会する",withdraw_public_user_path	 %>
+</div>
+</div>
+</div>
+</div>

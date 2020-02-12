@@ -1,0 +1,4 @@
+<strong>退会しますか？</strong>
+
+<strong><%= link_to "退会しない" ,public_user_path(current_user.id) %></strong>
+<strong><%= link_to "退会する",public_user_path(@user.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></strong>
