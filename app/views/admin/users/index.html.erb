@@ -1,0 +1,12 @@
+<strong>ユーザーリスト</strong>
+
+<table>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+		<td><%= user.first_name %><%= user.last_name %></td>
+		<td><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
+		<td>有効とか</td>
+	</tr>
+	<% end %>
+</table>

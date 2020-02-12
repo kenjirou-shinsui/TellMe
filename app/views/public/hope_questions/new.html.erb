@@ -1,0 +1,8 @@
+
+<strong>Hope Question</strong>
+
+<%= form_for [:public, @hope_question] do |f| %>
+			<div><%= f.text_area :hope_body,:size=>"42" %></div>
+
+				<div><%= f.submit "投稿する" %></div>
+				<% end %>

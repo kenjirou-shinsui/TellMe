@@ -1,0 +1,13 @@
+
+<strong>Hope questions</strong>
+
+<table>
+	<% @hope_questions.each do |hope_question| %>
+	<tr>
+		<td>HQ,<%= hope_question.hope_body %></td>
+		<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
+		<td>賛成</td>
+		<td><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+	</tr>
+	<% end %>
+</table>

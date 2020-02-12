@@ -1,1 +1,36 @@
 
+<strong>ユーザー詳細</strong>
+
+<table>
+	<tr>
+		<td>ユーザー名</td>
+		<td><%= @user.first_name %><%= @user.last_name %></td>
+	</tr>
+	<tr>
+		<td>E-mail</td>
+		<td><%= @user.email %></td>
+	</tr>
+	<tr>
+		<td>ステータス</td>
+		<% if @user.deleted_at == nil %>
+        <td>有効</td>
+        <% else %>
+        <td>退会済み</td>
+        <% end %>
+		<td>更新する</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+		<td>Questions</td>
+		<td>Answers</td>
+	</tr>
+	<% @answers.each do |answer| %>
+	<tr>
+		<td><%= answer.question.title %></td>
+		<td><%= answer.body %></td>
+		<td>delete</td>
+	</tr>
+	<% end %>
+</table>

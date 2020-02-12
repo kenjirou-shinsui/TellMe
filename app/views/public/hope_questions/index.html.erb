@@ -1,0 +1,16 @@
+<strong>Hope Questions</strong>
+
+<p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
+
+<% @hope_questions.each do |hope_question| %>
+
+<table>
+	<tr>
+		<td>HQ,<%= hope_question.hope_body %></td>
+		<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
+		<td>賛成</td>
+		<% if hope_question.user_id = current_user.id %>
+		<td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+		<% end %>
+	</tr>
+<% end %>
