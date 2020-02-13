@@ -1,7 +1,7 @@
 
 <strong>会員情報編集</strong>
 
-<p><%= "→パスワードを変更する場合はこちら" %></p>
+<p><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
 
 					<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
 					<div class="field">

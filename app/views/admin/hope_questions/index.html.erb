@@ -8,6 +8,7 @@
 		<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
 		<td>賛成</td>
 		<td><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+		<td><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>
 </table>

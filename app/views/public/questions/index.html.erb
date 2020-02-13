@@ -9,7 +9,11 @@
         <td>A,<%= question.answers.where(user_id: current_user.id).first.body %></td>
         <td><%= link_to "回答を編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
         <td><%= link_to "回答を消去する",public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-        <td>Me too</td>
+        <% if question.answers.where(user_id: current_user.id).first.metoos.count == 0 %>
+        <td>Me too数：0</td>
+        <% else %>
+        <td><%= link_to "Me too数：#{question.answers.where(user_id: current_user.id).first.metoos.count }" ,public_question_answer_metoo_path(question.id,question.answers.where(user_id: current_user.id).first.id,@metoos.where(answer_id: question.answers.where(user_id: current_user.id).first.id).first.id) %></td>
+        <% end %>
         <% else %>
         <td>A,未回答</td>
 		<td><%= link_to "回答する",new_public_question_answer_path(question.id) %>

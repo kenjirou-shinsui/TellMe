@@ -4,7 +4,7 @@
     <title>TellMe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,6 +17,7 @@
         <ul>
           <li><%= link_to "マイページ" ,public_user_path(current_user.id) %></li>
           <li><%= link_to "アバウト" ,about_public_home_path %></li>
+          <li><%= link_to "会員一覧" ,public_users_path %></li>
           <li><%= link_to "質問一覧" ,public_questions_path %></li>
           <li><%= link_to "ログアウト" ,destroy_user_session_path,method: :delete %></li>
           </ul>

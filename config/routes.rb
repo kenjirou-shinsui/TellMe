@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'public/relationships/follower' => 'public/relationships#follower', as: 'follower_public_relationship'
   get 'public/homes/top' => 'public/homes#top', as: 'top_public_home'
   get 'public/homes/about' => 'public/homes#about', as: 'about_public_home'
+  get 'public/metoos/index' => 'public/metoos#index', as: 'index_public_metoo'
 
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
       resources :users,only: [:index,:show,:edit,:update,:destroy]
       resources :questions,only: [:index] do
        resources :answers,only: [:new,:edit,:create,:update,:destroy] do
-       resources :metoos,only: [:index,:show,:create,:destroy]
+       resources :metoos,only: [:show,:create,:destroy]
       end
       end
       resources :hope_questions,only: [:new,:index,:create,:destroy] do
@@ -31,8 +32,10 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :users,only: [:index,:show,:update]
-      resources :questions,only: [:new,:index,:edit,:create,:update,:destroy]
-      resources :hope_questions,only: [:index]
+      resources :questions,only: [:new,:index,:edit,:create,:update,:destroy] do
+        resources :answers,only: [:destroy]
+      end
+      resources :hope_questions,only: [:index,:destroy]
       resources :searchs,only: [:index]
     end
 

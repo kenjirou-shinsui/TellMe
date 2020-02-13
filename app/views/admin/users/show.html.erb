@@ -30,7 +30,7 @@
 	<tr>
 		<td><%= answer.question.title %></td>
 		<td><%= answer.body %></td>
-		<td>delete</td>
+		<td><%= link_to "delete" ,admin_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>
 </table>

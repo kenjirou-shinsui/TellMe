@@ -1,0 +1,21 @@
+
+<storng>Questions</storng>
+
+    <table>
+    	<tr>
+    		<td>Q<%= @metoo.answer.question.id %>,<%= @metoo.answer.question.title %></td>
+    		<td>投稿ユーザー：<%= @metoo.answer.user.first_name %><%= @metoo.answer.user.last_name %></td>
+    		<td>A,<%= @metoo.answer.body %></td>
+    	</tr>
+    </table>
+
+<strong>Me tooユーザーリスト</strong>
+
+<table>
+    <% @metoos.each do |metoo| %>
+	<tr>
+		<td><%= attachment_image_tag metoo.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+		<td><%= metoo.user.first_name %><%= metoo.user.last_name %></td>
+		<td><%= link_to "ユーザーページへ" ,public_user_path(metoo.user.id) %></td>
+	</tr>
+	<% end %>
