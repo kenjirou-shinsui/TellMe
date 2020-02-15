@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         acts_as_paranoid
+
          has_many :agrees, dependent: :destroy
          has_many :metoos, dependent: :destroy
          has_many :hope_questions, dependent: :destroy

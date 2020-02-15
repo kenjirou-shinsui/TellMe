@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
 	def index
-        @users = User.all
+        @users = User.all.order("id DESC")
     end
 
     def show
@@ -28,6 +28,9 @@ class Public::UsersController < ApplicationController
     end
 
     def destroy
+         @user = User.find(params[:id])
+        @user.destroy
+        redirect_to root_path
     end
 
 private

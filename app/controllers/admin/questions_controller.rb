@@ -1,11 +1,13 @@
 class Admin::QuestionsController < ApplicationController
 
+    before_action :authenticate_admin!
+
 	def new
         @question = Question.new
     end
 
     def index
-        @questions = Question.all
+        @questions = Question.all.order("id DESC")
     end
 
     def edit

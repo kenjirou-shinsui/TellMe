@@ -1,7 +1,9 @@
 class Admin::HopeQuestionsController < ApplicationController
 
+	before_action :authenticate_admin!
+
 	def index
-		@hope_questions = HopeQuestion.all
+		@hope_questions = HopeQuestion.all.order("id DESC")
     end
 
     def destroy
