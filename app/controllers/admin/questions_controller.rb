@@ -2,7 +2,7 @@ class Admin::QuestionsController < ApplicationController
 
     before_action :authenticate_admin!
 
-	def new
+    def new
         @question = Question.new
     end
 
@@ -16,32 +16,32 @@ class Admin::QuestionsController < ApplicationController
 
     def create
         @question = Question.new(question_params)
-     if  @question.save
-         redirect_to admin_questions_path, notice: "successfully created question!"
-     else
-         render :new
-     end
+        if  @question.save
+            redirect_to admin_questions_path, notice: "successfully created question!"
+        else
+            render :new
+        end
     end
 
     def update
         @question = Question.find(params[:id])
-      if @question.update(question_params)
-         redirect_to admin_questions_path
-      else
-         render :edit
-      end
+        if @question.update(question_params)
+            redirect_to admin_questions_path
+        else
+            render :edit
+        end
     end
 
     def destroy
-     @question = Question.find(params[:id])
-     @question.destroy
-     redirect_to admin_questions_path
+        @question = Question.find(params[:id])
+        @question.destroy
+        redirect_to admin_questions_path
     end
 
-private
+    private
 
-  def question_params
-    params.require(:question).permit(:title)
-  end
+    def question_params
+        params.require(:question).permit(:title)
+    end
 
 end

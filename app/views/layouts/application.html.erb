@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TellMe</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>TellMe</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header>
-      <storng>Tell Me</storng>
-      <% if user_signed_in? %>
-      <nav>
-        <ul>
-          <li><%= link_to "マイページ" ,public_user_path(current_user.id) %></li>
-          <li><%= link_to "アバウト" ,about_public_home_path %></li>
-          <li><%= link_to "会員一覧" ,public_users_path %></li>
-          <li><%= link_to "質問一覧" ,public_questions_path %></li>
-          <li><%= link_to "ログアウト" ,destroy_user_session_path,method: :delete %></li>
-          </ul>
-        </nav>
-      <% elsif admin_signed_in? %>
-      <nav>
-        <ul>
-          <li><%= link_to "会員一覧" ,admin_users_path %></li>
-          <li><%= link_to "質問一覧" ,admin_questions_path %></li>
-          <li><%= link_to "希望質問一覧" ,admin_hope_questions_path %></li>
-          <li><%= link_to "ログアウト" ,destroy_admin_session_path,method: :delete %></li>
-          </ul>
-        </nav>
-        <% end %>
-    </header>
-    <%= yield %>
-  </body>
+<body>
+  <header>
+    <storng>Tell Me</storng>
+    <% if user_signed_in? %>
+    <nav>
+      <ul>
+        <li><%= link_to "マイページ" ,public_user_path(current_user.id) %></li>
+        <li><%= link_to "アバウト" ,about_public_home_path %></li>
+        <li><%= link_to "会員一覧" ,public_users_path %></li>
+        <li><%= link_to "質問一覧" ,public_questions_path %></li>
+        <li><%= link_to "ログアウト" ,destroy_user_session_path,method: :delete %></li>
+      </ul>
+    </nav>
+    <% elsif admin_signed_in? %>
+    <nav>
+      <ul>
+        <li><%= link_to "会員一覧" ,admin_users_path %></li>
+        <li><%= link_to "質問一覧" ,admin_questions_path %></li>
+        <li><%= link_to "希望質問一覧" ,admin_hope_questions_path %></li>
+        <li><%= link_to "ログアウト" ,destroy_admin_session_path,method: :delete %></li>
+      </ul>
+    </nav>
+    <% else %>
+    <nav>
+      <ul>
+        <li><%= link_to "トップ" ,root_path %></li>
+        <li><%= link_to "アバウト" ,about_public_home_path %></li>
+        <li><%= link_to "会員一覧" ,public_users_path %></li>
+        <li><%= link_to "質問一覧" ,public_questions_path %></li>
+        <li><%= link_to "ログイン" ,new_user_session_path %></li>
+      </ul>
+    </nav>
+    <% end %>
+  </header>
+  <%= yield %>
+</body>
 </html>

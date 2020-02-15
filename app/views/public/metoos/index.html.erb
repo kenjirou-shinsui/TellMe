@@ -7,11 +7,11 @@
 		<td>Q<%= metoo.answer.question.id %>,<%= metoo.answer.question.title %></td>
 		<td>A,<%= metoo.answer.body %></td>
 		<td><%= link_to public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id), method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      Me too</td>
-      <td><%= link_to "計#{ metoo.answer.metoos.count }人のユーザー" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
-      <% end %>
-  </tr>
-
-
+			<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+		Me too</td>
+		<td><%= link_to "計#{ metoo.answer.metoos.count }人のユーザー" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
 		<% end %>
+	</tr>
+
+
+	<% end %>

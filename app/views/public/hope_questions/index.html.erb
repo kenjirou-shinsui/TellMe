@@ -1,3 +1,6 @@
+
+<% if user_signed_in? %>
+
 <strong>Hope Questions</strong>
 
 <p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
@@ -10,25 +13,42 @@
 		<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
 		<% if current_user.id != hope_question.user_id %>
 		<td>
-		<% if hope_question.agreed_by?(current_user) %>
+			<% if hope_question.agreed_by?(current_user) %>
 
-    <%= link_to public_hope_question_agrees_path(hope_question.id), method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= hope_question.agrees.count %>賛成
-    <% end %>
+			<%= link_to public_hope_question_agrees_path(hope_question.id), method: :delete do %>
+			<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= hope_question.agrees.count %>賛成
+			<% end %>
 
-<% else %>
+			<% else %>
 
-    <%= link_to public_hope_question_agrees_path(hope_question.id), method: :post do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= hope_question.agrees.count %> 賛成
-    <% end %>
-</td>
-<% end %>
+			<%= link_to public_hope_question_agrees_path(hope_question.id), method: :post do %>
+			<i class="fa fa-heart-o" aria-hidden="true"></i>
+			<%= hope_question.agrees.count %> 賛成
+			<% end %>
+		</td>
+		<% end %>
 
-<% end %>
+		<% end %>
 		<% if current_user.id == hope_question.user_id %>
 		<td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		<% end %>
 	</tr>
-<% end %>
+	<% end %>
+
+	<% else %>
+
+	<strong>Hope Questions</strong>
+
+	<p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
+
+	<% @hope_questions.each do |hope_question| %>
+
+	<table>
+		<tr>
+			<td>HQ,<%= hope_question.hope_body %></td>
+			<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
+			<td><%= hope_question.agrees.count %> 賛成</td>
+		</tr>
+		<% end %>
+		<% end %>

@@ -1,4 +1,18 @@
 
+<% if @answer.errors.any? %>
+<div>
+	<ul>
+		<li>
+			<%= pluralize(@answer.errors.count, "error") %>
+			prohibited this obj from being saved:
+		</li>
+		<% @answer.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>
+
 <strong>Question</strong>
 <div>
 	<p>Q<%= @question.id %>,<%= @question.title %></p>
@@ -7,7 +21,7 @@
 <strong>Answer</strong>
 
 <%= form_for [:public, @question, @answer] do |f| %>
-			<div><%= f.text_area :body,:size=>"42" %></div>
+<div><%= f.text_area :body,:size=>"42" %></div>
 
-				<div><%= f.submit "更新する" %></div>
-				<% end %>
+<div><%= f.submit "更新する" %></div>
+<% end %>

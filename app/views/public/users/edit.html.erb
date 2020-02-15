@@ -1,31 +1,46 @@
 
+<% if @user.errors.any? %>
+<div>
+	<ul>
+		<li>
+			<%= pluralize(@user.errors.count, "error") %>
+			prohibited this obj from being saved:
+		</li>
+		<% @user.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+	<% end %>
+</div>
+
+
 <strong>会員情報編集</strong>
 
 <p><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
 
-					<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
-					<div class="field">
-	                  <%= f.label :image %>
-	                  <%= f.attachment_field :profile_image %>
-                    </div>
+<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
+<div class="field">
+	<%= f.label :image %>
+	<%= f.attachment_field :profile_image %>
+</div>
 
-						<table>
-							<tr>
-								<td>かな氏名</td>
-								<td><%= f.text_field :kana_first_name,autofocus: true %></td>
-								<td><%= f.text_field :kana_last_name, autofocus: true %></td>
-							</tr>
-							<tr>
-								<td>氏名</td>
-								<td><%= f.text_field :first_name,autofocus: true %></td>
-								<td><%= f.text_field :last_name, autofocus: true %></td>
-							</tr>
-							<tr>
-								<td>メールアドレス</td>
-								<td><%= f.text_field :email, autofocus: true %></td>
-							</tr>
-						</table>
-						<div>
-							<%= f.submit '更新する'  %>
-						</div>
-					<% end %>
+<table>
+	<tr>
+		<td>かな氏名</td>
+		<td><%= f.text_field :kana_first_name,autofocus: true %></td>
+		<td><%= f.text_field :kana_last_name, autofocus: true %></td>
+	</tr>
+	<tr>
+		<td>氏名</td>
+		<td><%= f.text_field :first_name,autofocus: true %></td>
+		<td><%= f.text_field :last_name, autofocus: true %></td>
+	</tr>
+	<tr>
+		<td>メールアドレス</td>
+		<td><%= f.text_field :email, autofocus: true %></td>
+	</tr>
+</table>
+<div>
+	<%= f.submit '更新する'  %>
+</div>
+<% end %>

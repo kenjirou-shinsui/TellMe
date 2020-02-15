@@ -3,16 +3,16 @@
 
 <table>
 	<% @relationships.each do |relationship| %>
-		<tr>
-			<td><%= attachment_image_tag relationship.follow, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-			<td><%= relationship.follow.first_name %><%= relationship.follow.last_name %></td>
-			<td><%= link_to "ユーザーページへ" ,public_user_path(relationship.follow.id) %></td>
-			<td><%= form_for(current_user.relationships.find_by(follow_id: relationship.follow.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: relationship.follow.id).id}" ,html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :follow_id, relationship.follow.id %>
-      <%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
-    <% end %></td>
-</tr>
-  <% end %>
-</table>
+	<tr>
+		<td><%= attachment_image_tag relationship.follow, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+		<td><%= relationship.follow.first_name %><%= relationship.follow.last_name %></td>
+		<td><%= link_to "ユーザーページへ" ,public_user_path(relationship.follow.id) %></td>
+		<td><%= form_for(current_user.relationships.find_by(follow_id: relationship.follow.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: relationship.follow.id).id}" ,html: { method: :delete }) do |f| %>
+			<%= hidden_field_tag :follow_id, relationship.follow.id %>
+			<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+			<% end %></td>
+		</tr>
+		<% end %>
+	</table>
 
 

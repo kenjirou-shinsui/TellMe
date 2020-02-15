@@ -1,6 +1,9 @@
 class Public::UsersController < ApplicationController
 
-	def index
+    before_action :authenticate_user!,only: [:edit,:withdraw,:update,:destroy]
+    before_action :login_check,only: [:edit,:withdraw,:update,:destroy]
+
+    def index
         @users = User.all.order("id DESC")
     end
 
@@ -20,23 +23,30 @@ class Public::UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-            if @user.update(user_params)
-                redirect_to public_user_path(@user.id)
-            else
-                render :edit
-            end
+        if @user.update(user_params)
+            redirect_to public_user_path(@user.id)
+        else
+            render :edit
+        end
     end
 
     def destroy
-         @user = User.find(params[:id])
+        @user = User.find(params[:id])
         @user.destroy
         redirect_to root_path
     end
 
-private
+    private
 
- def user_params
-    params.require(:user).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:email,:profile_image)
- end
+    def user_params
+        params.require(:user).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:email,:profile_image)
+    end
+
+    def login_check
+        user = User.find(params[:id])
+        unless  user.id == current_user.id
+            redirect_to root_path
+        end
+    end
 
 end
