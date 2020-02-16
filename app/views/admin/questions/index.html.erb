@@ -8,6 +8,7 @@
 	<tr>
 		<td>Q<%= question.id %>,</td>
 		<td><%= question.title %></td>
+		<td>回答数：<%= question.answers.count %></td>
 		<td><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
 		<td><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>

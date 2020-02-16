@@ -2,6 +2,7 @@
 <% if user_signed_in? %>
 
 <strong>Questions</strong>
+<p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
 <table>
     <% @all_questions.each do |question| %>
     <tr>
@@ -23,9 +24,9 @@
         <% end %>
     </table>
 
-    <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
     <% else %>
     <strong>Questions</strong>
+           <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
     <p><%= link_to "ログイン・会員登録して回答に答える!",root_path %></p>
     <table>
         <% @all_questions.each do |question| %>
@@ -33,6 +34,5 @@
             <td>Q<%= question.id %>,<%= question.title %></td>
         </table>
         <% end %>
-        <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
 
         <% end %>

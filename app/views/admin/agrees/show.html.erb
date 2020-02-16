@@ -1,0 +1,19 @@
+<strong>HopeQuestion</strong>
+
+<table>
+    <tr>
+        <td>Q<%= @hope_question.id %>,<%= @hope_question.hope_body %></td>
+        <td>投稿ユーザー：<%= @hope_question.user.first_name %><%= @hope_question.user.last_name %></td>
+    </tr>
+</table>
+
+<strong>この回答へのMe tooユーザーリスト</strong>
+
+<table>
+    <% @agrees.each do |agree| %>
+    <tr>
+        <td><%= attachment_image_tag agree.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+        <td><%= agree.user.first_name %><%= agree.user.last_name %></td>
+        <td><%= link_to "ユーザーページへ" ,admin_user_path(agree.user.id) %></td>
+    </tr>
+    <% end %>
