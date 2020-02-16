@@ -34,7 +34,7 @@
     private
 
     def login_check
-      user = User.find(params[:user_id])
+      user = User.find(params[:id])
       unless  user.id == current_user.id
         redirect_to root_path
       end

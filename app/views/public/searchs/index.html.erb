@@ -1,0 +1,42 @@
+<% if @model == "1"%>
+    <h1>User</h1>
+    <table>
+        <% @users.each do |user| %>
+        <thead>
+            <tr>
+                <th></th>
+                <th><%= user.first_name %> </th>
+            </tr>
+        </thead>
+        <% end %>
+    </table>
+
+<% elsif @model == "2" %>
+    <h2>Post</h2>
+    <table>
+    <% @questions.each do |question| %>
+        <thead>
+            <tr>
+                <th></th>
+                <th><%= question.title %></th>
+            </tr>
+        </thead>
+    <% end %>
+    </table>
+
+    <% elsif @model == "3" %>
+    <h2>Post</h2>
+    <table>
+    <% @hope_questions.each do |hope_question| %>
+        <thead>
+            <tr>
+                <th></th>
+                <th><%= hope_question.hope_body %></th>
+            </tr>
+        </thead>
+    <% end %>
+    </table>
+
+<% else %>
+
+<% end %>

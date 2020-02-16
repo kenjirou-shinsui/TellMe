@@ -4,8 +4,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-2">
-			<p><%= link_to "フォローリスト" ,follow_public_relationship_path %></p>
-			<p><%= link_to "フォロワーリスト" ,follower_public_relationship_path %></p>
+			<p><%= link_to "フォローリスト" ,follow_public_relationship_path(current_user.id) %></p>
+			<p><%= link_to "フォロワーリスト" ,follower_public_relationship_path(current_user.id) %></p>
 			<p><%= link_to "自分がしたMetoo一覧" ,index_public_metoo_path %></p>
 		</div>
 		<div class="col-xs-10">

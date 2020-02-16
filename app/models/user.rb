@@ -38,4 +38,12 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  def User.search(search, model)
+    if model == "1"
+       User.where(['first_name LIKE ?', "%#{search}%"])
+    else
+       User.all
+    end
+end
+
 end

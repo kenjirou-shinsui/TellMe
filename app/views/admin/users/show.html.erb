@@ -12,12 +12,18 @@
 	</tr>
 	<tr>
 		<td>ステータス</td>
+		<td>
 		<% if @user.deleted_at == nil %>
-		<td>有効</td>
+		有効
 		<% else %>
-		<td>退会済み</td>
+		退会済み
 		<% end %>
-		<td>更新する</td>
+	</td>
+		<td><div>
+        <%= form_tag(admin_user_path(@user.id), :method => 'patch', data: {confirm: "本当に更新しますか？"}) do %>
+        <%= select_tag(:status, options_for_select([["有効", "1"],["退会","2"]]))%>
+        <%= submit_tag '変更' %>
+        <% end %></td>
 	</tr>
 </table>
 
