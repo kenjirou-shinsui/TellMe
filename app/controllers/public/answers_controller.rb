@@ -1,7 +1,7 @@
 class Public::AnswersController < ApplicationController
 
-    before_action :authenticate_user!,only: [:new,:edit,:create,:update,:destroy]
-    before_action :login_check,only: [:new,:edit,:create,:update,:destroy]
+    before_action :authenticate_user!,only: [:edit,:update,:destroy]
+    before_action :login_check,only: [:edit,:update,:destroy]
 
     def new
         @question = Question.find(params[:question_id])
@@ -45,8 +45,8 @@ class Public::AnswersController < ApplicationController
     end
 
     def login_check
-        user = User.find(params[:user_id])
-        unless  user.id == current_user.id
+        answer = Answer.find(params[:id])
+        unless  answer.user.id == current_user.id
             redirect_to root_path
         end
     end

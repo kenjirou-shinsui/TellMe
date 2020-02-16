@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
 
-    before_action :authenticate_user!,only: [:edit,:withdraw,:update,:destroy]
+    before_action :authenticate_user!,only: [:follow,:follower,:edit,:withdraw,:update,:destroy]
     before_action :login_check,only: [:edit,:withdraw,:update,:destroy]
 
     def index
@@ -19,6 +19,14 @@ class Public::UsersController < ApplicationController
 
     def withdraw
         @user = User.find(params[:id])
+    end
+
+    def follow
+      @relationships = Relationship.where(user_id:current_user.id)
+    end
+
+    def follower
+      @relationships = Relationship.where(follow_id:current_user.id)
     end
 
     def update

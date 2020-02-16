@@ -1,7 +1,6 @@
 class Public::MetoosController < ApplicationController
 
     before_action :authenticate_user!,only: [:create,:destroy]
-    before_action :login_check,only: [:create,:destroy]
 
     def index
         @metoos = Metoo.where(user_id: current_user.id)
@@ -25,15 +24,6 @@ class Public::MetoosController < ApplicationController
         metoo = current_user.metoos.find_by(answer_id: answer.id)
         metoo.destroy
         redirect_back(fallback_location: root_path)
-    end
-
-    private
-
-    def login_check
-        user = User.find(params[:user_id])
-        unless  user.id == current_user.id
-            redirect_to root_path
-        end
     end
 
 end
