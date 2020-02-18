@@ -1,7 +1,7 @@
 
 <strong>質問編集</strong>
 
-<P>Q<%= @question.id %>,</P>
+<P>Q,</P>
 
 <%= form_for(@question, url:"/admin/questions/#{@question.id}") do |f| %>
 　<%= f.text_field :title, :size=>"42" %>

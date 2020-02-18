@@ -24,7 +24,7 @@
     </nav>
     <div>
         <%= form_tag(public_searchs_path, :method => 'get') do %>
-        <%= text_field_tag :search %>
+        <%= text_field_tag :search ,'',:size=>"30",:placeholder => "--空白は半角で検索してください--" %>
         <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
         <%= submit_tag 'Search', :name => nil %>
         <% end %>

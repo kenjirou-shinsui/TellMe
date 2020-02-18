@@ -97,8 +97,8 @@
 	</tr>
 	<% @answers.each do |answer| %>
 	<tr>
-		<td><%= answer.question.title %></td>
-		<td><%= answer.body %></td>
+		<td>Q,<%= answer.question.title %></td>
+		<td>A,<%= answer.body %></td>
 		<% if answer.metoos.count == 0 %>
 		<td>Me too数：0</td>
 		<% else %>

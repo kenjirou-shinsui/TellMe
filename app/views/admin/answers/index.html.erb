@@ -6,8 +6,7 @@
 <table>
 	<% @answers.each do |answer| %>
 	<tr>
-		<td>A<%= answer.id %>,</td>
-		<td><%= link_to "回答者：#{ answer.user.first_name }#{ answer.user.last_name }" ,admin_user_path(answer.user.id) %></td>
+		<td>回答者：<%= link_to "#{ answer.user.first_name }#{ answer.user.last_name }" ,admin_user_path(answer.user.id) %></td>
 		<td>A.<%= answer.body %></td>
 		<td><%= link_to "delete" ,admin_question_answer_path(@question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>

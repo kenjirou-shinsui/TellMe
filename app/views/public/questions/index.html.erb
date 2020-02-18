@@ -6,7 +6,7 @@
 <table>
     <% @all_questions.each do |question| %>
     <tr>
-        <td>Q<%= question.id %>,<%= question.title %></td>
+        <td>Q,<%= question.title %></td>
         <% if question.answered_by?(current_user) %>
         <td>A,<%= question.answers.where(user_id: current_user.id).first.body %></td>
         <td><%= link_to "回答を編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
@@ -31,7 +31,7 @@
     <table>
         <% @all_questions.each do |question| %>
         <tr>
-            <td>Q<%= question.id %>,<%= question.title %></td>
+            <td>Q,<%= question.title %></td>
         </tr>
         <% end %>
         </table>
