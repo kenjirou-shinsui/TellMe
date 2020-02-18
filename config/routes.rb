@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users,only: [:index,:show,:update]
     resources :questions,only: [:new,:index,:edit,:create,:update,:destroy] do
-      resources :answers,only: [:destroy]
+      resources :answers,only: [:index,:destroy]
     end
     resources :hope_questions,only: [:index,:destroy] do
       resources :agrees,only: [:show]
