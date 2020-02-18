@@ -6,9 +6,10 @@
 <table>
 	<% @answers.each do |answer| %>
 	<tr>
-		<td>回答者：<%= link_to "#{ answer.user.first_name }#{ answer.user.last_name }" ,admin_user_path(answer.user.id) %></td>
+		<td>回答者<%= link_to "#{ answer.user.first_name }#{ answer.user.last_name }" ,admin_user_path(answer.user.id) %></td>
 		<td>A.<%= answer.body %></td>
 		<td><%= link_to "delete" ,admin_question_answer_path(@question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>
+	<%= paginate @answers, class: "paginate" %>
 </table>

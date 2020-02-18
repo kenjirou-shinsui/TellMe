@@ -28,6 +28,7 @@
         <% end %>
     </tr>
     <% end %>
+    <%= paginate @users, class: "paginate" %>
 </table>
 <% elsif @model == "2" %>
 
@@ -36,7 +37,7 @@
 <strong>Questions</strong>
 <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
 <table>
-    <% @all_questions.each do |question| %>
+    <% @questions.each do |question| %>
     <tr>
         <td>Q<%= question.title %></td>
         <% if question.answered_by?(current_user) %>
@@ -54,6 +55,7 @@
             <% end %>
         </tr>
         <% end %>
+        <%= paginate @questions, class: "paginate" %>
     </table>
 
     <% else %>
@@ -61,11 +63,12 @@
     <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
     <p><%= link_to "ログイン・会員登録して回答に答える!",root_path %></p>
     <table>
-        <% @all_questions.each do |question| %>
+        <% @questions.each do |question| %>
         <tr>
             <td>Q,<%= question.title %></td>
         </tr>
         <% end %>
+        <%= paginate @questions, class: "paginate" %>
     </table>
 
     <% end %>
@@ -108,6 +111,7 @@
             <td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
             <% end %>
         </tr>
+        <%= paginate @hope_questions, class: "paginate" %>
     </table>
     <% end %>
 
@@ -125,6 +129,7 @@
             <td>賛成数：<%= hope_question.agrees.count %></td>
         </tr>
         <% end %>
+        <%= paginate @hope_questions, class: "paginate" %>
     </table>
     <% end %>
 

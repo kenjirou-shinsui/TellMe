@@ -19,3 +19,5 @@
         <td><%= link_to "ユーザーページへ" ,public_user_path(metoo.user.id) %></td>
     </tr>
     <% end %>
+    <%= paginate @metoos, class: "paginate" %>
+</table>

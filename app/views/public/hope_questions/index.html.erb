@@ -35,6 +35,7 @@
 		<% end %>
 	</tr>
 </table>
+<%= paginate @hope_questions, class: "paginate" %>
 	<% end %>
 
 	<% else %>
@@ -52,4 +53,5 @@
 		</tr>
 		<% end %>
 	</table>
+	<%= paginate @hope_questions, class: "paginate" %>
 		<% end %>

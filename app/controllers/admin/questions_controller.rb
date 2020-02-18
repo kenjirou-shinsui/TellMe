@@ -7,7 +7,7 @@ class Admin::QuestionsController < ApplicationController
     end
 
     def index
-        @questions = Question.all.order("id DESC")
+        @questions = Question.page(params[:page]).reverse_order
     end
 
     def edit
@@ -17,7 +17,7 @@ class Admin::QuestionsController < ApplicationController
     def create
         @question = Question.new(question_params)
         if  @question.save
-            redirect_to admin_questions_path, notice: "successfully created question!"
+            redirect_to admin_questions_path
         else
             render :new
         end

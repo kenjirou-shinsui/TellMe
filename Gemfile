@@ -80,3 +80,4 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 
 gem 'paranoia', '~> 2.3','>=2.3.1'
+gem 'kaminari','~> 1.1.1'

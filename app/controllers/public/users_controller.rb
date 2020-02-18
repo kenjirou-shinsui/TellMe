@@ -4,12 +4,12 @@ class Public::UsersController < ApplicationController
     before_action :login_check,only: [:edit,:withdraw,:update,:destroy]
 
     def index
-        @users = User.all.order("id DESC")
+        @users = User.page(params[:page]).reverse_order
     end
 
     def show
         @user = User.find(params[:id])
-        @all_answers = Answer.all
+        @all_answers = Answer.all.page(params[:page])
         @answers = @all_answers.where(user_id: @user.id)
     end
 
@@ -22,11 +22,11 @@ class Public::UsersController < ApplicationController
     end
 
     def follow
-      @relationships = Relationship.where(user_id:current_user.id)
+      @relationships = Relationship.where(user_id:current_user.id).page(params[:page]).reverse_order
     end
 
     def follower
-      @relationships = Relationship.where(follow_id:current_user.id)
+      @relationships = Relationship.where(follow_id:current_user.id).page(params[:page]).reverse_order
     end
 
     def update
