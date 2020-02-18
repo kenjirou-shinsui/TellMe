@@ -6,6 +6,7 @@
   <tr>
     <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
     <td><%= user.first_name %><%= user.last_name %></td>
+    <td>回答数：<%= Answer.where(user_id:user.id).count %></td>
     <td><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
     <% if user_signed_in? %>
     <% unless current_user == user %>

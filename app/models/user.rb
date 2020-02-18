@@ -40,10 +40,27 @@ class User < ApplicationRecord
 
   def User.search(search, model)
     if model == "1"
-       User.where(['first_name LIKE ?', "%#{search}%"])
-    else
-       User.all
-    end
-end
+      if search && search != ""
+        words = search.to_s.split(" ")
+        columns = ["first_name", "last_name", "kana_first_name", "kana_last_name"]
+        query = []
+            result = []
 
-end
+           columns.each do |column|
+            query << ["#{column} LIKE ?"]
+             end
+
+             words.each_with_index do |w, index|
+        if index == 0
+          result[index] = User.where([query.join(" OR "), "%#{w}%","%#{w}%","%#{w}%","%#{w}%"])
+        else
+          result[index] = result[index-1].where([query.join(" OR "), "%#{w}%","%#{w}%","%#{w}%","%#{w}%"])
+        end
+      end
+      return result[words.length-1]
+    else
+      User.all
+    end
+  end
+   end
+  end

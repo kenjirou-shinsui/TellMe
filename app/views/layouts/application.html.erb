@@ -28,6 +28,7 @@
         <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
         <%= submit_tag 'Search', :name => nil %>
         <% end %>
+      </div>
     <% elsif admin_signed_in? %>
     <nav>
       <ul>
@@ -37,6 +38,13 @@
         <li><%= link_to "ログアウト" ,destroy_admin_session_path,method: :delete %></li>
       </ul>
     </nav>
+    <div>
+        <%= form_tag(admin_searchs_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
+        <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </div>
     <% else %>
     <nav>
       <ul>
@@ -47,6 +55,13 @@
         <li><%= link_to "ログイン" ,new_user_session_path %></li>
       </ul>
     </nav>
+        <div>
+        <%= form_tag(public_searchs_path, :method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
+        <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </div>
     <% end %>
   </header>
   <%= yield %>

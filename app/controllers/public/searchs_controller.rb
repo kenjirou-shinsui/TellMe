@@ -1,12 +1,14 @@
 class Public::SearchsController < ApplicationController
 
 	def index
+    @all_questions = Question.all.order("id DESC")
+    @answers = Answer.all
         @model = params[:model]
     if @model == "1"
       @users = User.search(params[:search], @model)
-    elsif
+    elsif @model == "2"
       @questions = Question.search(params[:search], @model)
-  else
+  else @model == "3"
   	@hope_questions = HopeQuestion.search(params[:search], @model)
     end
     end

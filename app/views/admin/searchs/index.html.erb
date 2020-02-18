@@ -1,0 +1,65 @@
+
+<% if @model == "1"%>
+
+<strong>ユーザーリスト</strong>
+
+<table>
+	<% @users.each do |user| %>
+	<tr>
+		<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+		<td><%= user.first_name %><%= user.last_name %></td>
+		<td><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
+		<td>
+		<% if user.deleted_at == nil %>
+		有効
+		<% else %>
+		退会済み
+		<% end %>
+	</td>
+	</tr>
+	<% end %>
+</table>
+
+<% elsif @model == "2"%>
+
+<strong>Questions</strong>
+
+<P><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></P>
+
+<table>
+	<% @questions.each do |question| %>
+	<tr>
+		<td>Q<%= question.id %>,</td>
+		<td><%= question.title %></td>
+		<td>回答数：<%= question.answers.count %></td>
+		<td><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
+		<td><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+	</tr>
+	<% end %>
+</table>
+
+<% elsif @model == "3"%>
+
+
+<strong>Hope questions</strong>
+
+<table>
+	<% @hope_questions.each do |hope_question| %>
+	<tr>
+		<td>HQ,<%= hope_question.hope_body %></td>
+		<td>投稿ユーザー：<%= link_to "#{ hope_question.user.first_name}#{ hope_question.user.last_name}" ,admin_user_path(hope_question.user.id) %></td>
+		<td>
+		<% if hope_question.agrees.count == 0 %>
+			賛成数：0
+			<% else %>
+		<%= link_to "賛成数：#{hope_question.agrees.count}" ,admin_hope_question_agree_path(hope_question.id,hope_question.agrees.first.id) %>
+		<% end %>
+	</td>
+		<td><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+		<td><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+	</tr>
+	<% end %>
+</table>
+
+
+<% end %>

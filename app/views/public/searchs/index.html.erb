@@ -1,42 +1,131 @@
 <% if @model == "1"%>
-    <h1>User</h1>
-    <table>
-        <% @users.each do |user| %>
-        <thead>
-            <tr>
-                <th></th>
-                <th><%= user.first_name %> </th>
-            </tr>
-        </thead>
+
+<strong>ユーザーリスト</strong>
+
+<table>
+    <% @users.each do |user| %>
+    <tr>
+        <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+        <td><%= user.first_name %><%= user.last_name %></td>
+        <td>回答数：<%= Answer.where(user_id:user.id).count %></td>
+        <td><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
+        <% if user_signed_in? %>
+        <% unless current_user == user %>
+        <td>
+            <% if current_user.following?(user) %>
+            <%= form_for(current_user.relationships.find_by(follow_id: user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: user.id).id}" ,html: { method: :delete }) do |f| %>
+            <%= hidden_field_tag :follow_id, user.id %>
+            <%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+            <% end %>
+            <% else %>
+            <%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
+            <%= hidden_field_tag :follow_id, user.id %>
+            <%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
+            <% end %>
+            <% end %>
+        </td>
+        <% end %>
+        <% end %>
+    </tr>
+    <% end %>
+</table>
+<% elsif @model == "2" %>
+
+<% if user_signed_in? %>
+
+<strong>Questions</strong>
+<p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
+<table>
+    <% @all_questions.each do |question| %>
+    <tr>
+        <td>Q<%= question.id %>,<%= question.title %></td>
+        <% if question.answered_by?(current_user) %>
+        <td>A,<%= question.answers.where(user_id: current_user.id).first.body %></td>
+        <td><%= link_to "回答を編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
+        <td><%= link_to "回答を消去する",public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+        <% if question.answers.where(user_id: current_user.id).first.metoos.count == 0 %>
+        <td>Me too数：0</td>
+        <% else %>
+        <td><%= link_to "Me too数：#{question.answers.where(user_id: current_user.id).first.metoos.count }" ,public_question_answer_metoo_path(question.id,question.answers.where(user_id: current_user.id).first.id,@metoos.where(answer_id: question.answers.where(user_id: current_user.id).first.id).first.id) %></td>
+        <% end %>
+        <% else %>
+        <td>A,未回答</td>
+        <td><%= link_to "回答する",new_public_question_answer_path(question.id) %>
+            <% end %>
+        </tr>
         <% end %>
     </table>
 
-<% elsif @model == "2" %>
-    <h2>Post</h2>
+    <% else %>
+    <strong>Questions</strong>
+    <p><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
+    <p><%= link_to "ログイン・会員登録して回答に答える!",root_path %></p>
     <table>
-    <% @questions.each do |question| %>
-        <thead>
-            <tr>
-                <th></th>
-                <th><%= question.title %></th>
-            </tr>
-        </thead>
-    <% end %>
+        <% @all_questions.each do |question| %>
+        <tr>
+            <td>Q<%= question.id %>,<%= question.title %></td>
+        </tr>
+        <% end %>
     </table>
+
+    <% end %>
 
     <% elsif @model == "3" %>
-    <h2>Post</h2>
-    <table>
+
+
+    <% if user_signed_in? %>
+
+    <strong>Hope Questions</strong>
+
+    <p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
+
     <% @hope_questions.each do |hope_question| %>
-        <thead>
-            <tr>
-                <th></th>
-                <th><%= hope_question.hope_body %></th>
-            </tr>
-        </thead>
-    <% end %>
+
+    <table>
+        <tr>
+            <td>HQ,<%= hope_question.hope_body %></td>
+            <td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+            <% if current_user.id != hope_question.user_id %>
+            <td>
+                <% if hope_question.agreed_by?(current_user) %>
+
+                <%= link_to public_hope_question_agrees_path(hope_question.id), method: :delete do %>
+                <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                <%= hope_question.agrees.count %>賛成
+                <% end %>
+
+                <% else %>
+
+                <%= link_to public_hope_question_agrees_path(hope_question.id), method: :post do %>
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <%= hope_question.agrees.count %> 賛成
+                <% end %>
+            </td>
+            <% end %>
+
+            <% end %>
+            <% if current_user.id == hope_question.user_id %>
+            <td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            <% end %>
+        </tr>
     </table>
+    <% end %>
 
-<% else %>
+    <% else %>
 
-<% end %>
+    <strong>Hope Questions</strong>
+
+    <p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
+
+    <table>
+        <% @hope_questions.each do |hope_question| %>
+        <tr>
+            <td>HQ,<%= hope_question.hope_body %></td>
+            <td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+            <td>賛成数：<%= hope_question.agrees.count %></td>
+        </tr>
+        <% end %>
+    </table>
+    <% end %>
+
+    <% end %>

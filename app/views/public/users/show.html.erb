@@ -48,17 +48,17 @@
 <% else %>
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %>
 <div>
-<% if current_user.following?(@user) %>
-      <%= form_for(current_user.relationships.find_by(follow_id: @user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: @user.id).id}" ,html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
-      <% end %>
-      <% else %>
-      <%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
-      <%= hidden_field_tag :follow_id, @user.id %>
-      <%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
-      <% end %>
-      <% end %>
+	<% if current_user.following?(@user) %>
+	<%= form_for(current_user.relationships.find_by(follow_id: @user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: @user.id).id}" ,html: { method: :delete }) do |f| %>
+	<%= hidden_field_tag :follow_id, @user.id %>
+	<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+	<% end %>
+	<% else %>
+	<%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
+	<%= hidden_field_tag :follow_id, @user.id %>
+	<%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
+	<% end %>
+	<% end %>
 </div>
 <table>
 	<tr>
@@ -99,7 +99,11 @@
 	<tr>
 		<td><%= answer.question.title %></td>
 		<td><%= answer.body %></td>
+		<% if answer.metoos.count == 0 %>
+		<td>Me too数：0</td>
+		<% else %>
 		<td><%= link_to "Me too数：#{answer.metoos.count}" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
+		<% end %>
 	</tr>
 	<% end %>
 </table>

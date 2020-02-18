@@ -10,7 +10,7 @@
 <table>
 	<tr>
 		<td>HQ,<%= hope_question.hope_body %></td>
-		<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
+		<td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
 		<% if current_user.id != hope_question.user_id %>
 		<td>
 			<% if hope_question.agreed_by?(current_user) %>
@@ -34,6 +34,7 @@
 		<td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		<% end %>
 	</tr>
+</table>
 	<% end %>
 
 	<% else %>
@@ -42,13 +43,13 @@
 
 	<p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
 
-	<% @hope_questions.each do |hope_question| %>
-
 	<table>
+			<% @hope_questions.each do |hope_question| %>
 		<tr>
 			<td>HQ,<%= hope_question.hope_body %></td>
-			<td>投稿ユーザー：<%= hope_question.user.first_name %><%= hope_question.user.last_name %></td>
-			<td><%= hope_question.agrees.count %> 賛成</td>
+			<td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+			<td>賛成数：<%= hope_question.agrees.count %></td>
 		</tr>
 		<% end %>
+	</table>
 		<% end %>

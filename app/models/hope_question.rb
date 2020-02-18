@@ -11,10 +11,27 @@ class HopeQuestion < ApplicationRecord
 
 	def HopeQuestion.search(search, model)
     if model == "3"
-      HopeQuestion.where(['hope_body LIKE ?', "%#{search}%"])
+    	if search && search != ""
+    		words = search.to_s.split(" ")
+    		columns = ["hope_body"]
+    		query = []
+            result = []
+
+           columns.each do |column|
+            query << ["#{column} LIKE ?"]
+             end
+
+             words.each_with_index do |w, index|
+        if index == 0
+          result[index] = HopeQuestion.where([query.join(" OR "), "%#{w}%"])
+        else
+          result[index] = result[index-1].where([query.join(" OR "), "%#{w}%"])
+        end
+      end
+      return result[words.length-1]
     else
       HopeQuestion.all
     end
-end
-
-end
+  end
+   end
+  end
