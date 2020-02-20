@@ -1,16 +1,16 @@
+<div class="user-box">
+<p class="user-title-index">ユーザーリスト</p>
 
-<strong>ユーザーリスト</strong>
-
-<table>
+<table class="table-borderless user-table-index">
   <% @users.each do |user| %>
   <tr>
-    <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-    <td><%= user.first_name %><%= user.last_name %></td>
-    <td>回答数：<%= Answer.where(user_id:user.id).count %></td>
-    <td><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
+    <td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+    <td class="user-td-index"><%= user.first_name %><%= user.last_name %></td>
+    <td class="user-td-index">回答数：<%= Answer.where(user_id:user.id).count %></td>
+    <td class="user-td-index"><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
     <% if user_signed_in? %>
     <% unless current_user == user %>
-    <td>
+    <td class="user-td-index">
       <% if current_user.following?(user) %>
       <%= form_for(current_user.relationships.find_by(follow_id: user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: user.id).id}" ,html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, user.id %>
@@ -29,3 +29,4 @@
   <% end %>
   <%= paginate @users, class: "paginate" %>
 </table>
+</div>

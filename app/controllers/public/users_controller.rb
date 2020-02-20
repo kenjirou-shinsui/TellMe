@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @all_answers = Answer.all.page(params[:page])
+        @all_answers = Answer.all.page(params[:page]).order('question_id')
         @answers = @all_answers.where(user_id: @user.id)
     end
 

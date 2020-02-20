@@ -12,11 +12,11 @@
 	</ul>
 	<% end %>
 </div>
-
+<div class="user-box">
 
 <strong>会員情報編集</strong>
 
-<p><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
+<p class="select-user-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
 
 <%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
 <div class="field">
@@ -24,16 +24,16 @@
 	<%= f.attachment_field :profile_image %>
 </div>
 
-<table>
+<table class="table-bordered user-table-edit">
 	<tr>
 		<td>かな氏名</td>
-		<td><%= f.text_field :kana_first_name,autofocus: true %></td>
-		<td><%= f.text_field :kana_last_name, autofocus: true %></td>
+		<td><%= f.text_field :kana_first_name,autofocus: true %>
+		<%= f.text_field :kana_last_name, autofocus: true %></td>
 	</tr>
 	<tr>
 		<td>氏名</td>
-		<td><%= f.text_field :first_name,autofocus: true %></td>
-		<td><%= f.text_field :last_name, autofocus: true %></td>
+		<td><%= f.text_field :first_name,autofocus: true %>
+		<%= f.text_field :last_name, autofocus: true %></td>
 	</tr>
 	<tr>
 		<td>メールアドレス</td>
@@ -44,3 +44,4 @@
 	<%= f.submit '更新する'  %>
 </div>
 <% end %>
+</div>

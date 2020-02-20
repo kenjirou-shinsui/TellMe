@@ -1,3 +1,76 @@
 // Place all the styles related to the public/Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-box{
+	text-align: center;
+}
+
+// index関連
+.user-title-index{
+	font-size: 30px;
+	padding-right: 60%;
+}
+.user-table-index{
+	margin: 50px auto;
+	width: 70%;
+	font-size: 16px;
+}
+
+.user-td-index{
+	height:130px;
+}
+.user-td-index:nth-child(5){
+	width:10%;
+}
+
+// show関連
+
+.user-table-show{
+	margin: 30px auto 20px;
+	width: 90%;
+}
+
+.user-th-show{
+	font-size: 28px;
+}
+
+.user-td-show{
+	height: 80px;
+	text-align: left;
+	font-size: 16px;
+}
+
+.image-user-show{
+	padding-right: 300px;
+	display: inline-block;
+}
+
+.text1-user-show{
+	padding-left: 50px;
+}
+.withdraw-user-show{
+	text-align: right;
+}
+
+.follow-user-show{
+	margin-bottom: 80px;
+	font-size: 16px;
+}
+.follow-btn-user-show{
+	width: 120px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.user-table-show2{
+	width: 70%;
+	margin: 30px 120px 20px auto;
+}
+.user-table-edit{
+	width: 40%;
+	margin:20px auto;
+}
+.select-user-edit{
+	margin: 0 auto;
+}
