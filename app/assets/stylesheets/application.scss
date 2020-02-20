@@ -1,23 +1,25 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+// ヘッダー関連
 
 .headers{
 	position: relative;
@@ -25,22 +27,57 @@
 }
 
 .title{
-    font-size: 60px;
-    position: absolute;
-    top:25%;
-    left:0px;
+	font-size: 60px;
+	position: absolute;
+	top:25%;
+	left:0px;
 }
 
 .navs{
 	text-align: right;
 	position: absolute;
-	top:43%;
+	top:46%;
 	right: 3%;
 }
 
 .form{
 	text-align: right;
 	position: absolute;
-	top:30%;
+	top:33%;
 	right: 5%;
+}
+
+// device関連
+
+.d-form{
+	text-align: center;
+}
+
+.d-text1{
+	font-size: 38px;
+	margin-bottom: 50px;
+}
+
+.d-text2{
+	font-size: 25px;
+	padding-right: 22%;
+	margin-bottom: 15px;
+}
+
+.d-text3{
+	font-size: 18px;
+	margin-bottom: 30px;
+}
+
+.d-text4{
+	margin: 15px auto 30px;
+}
+
+.d-table{
+	margin: 0px auto;
+	width: 60%;
+}
+
+.d-td{
+	height: 40px;
 }
