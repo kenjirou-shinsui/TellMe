@@ -81,3 +81,4 @@ gem 'jquery-rails'
 
 gem 'paranoia', '~> 2.3','>=2.3.1'
 gem 'kaminari','~> 1.1.1'
+gem 'font-awesome-sass', '~> 5.4.1'

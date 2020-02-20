@@ -14,4 +14,33 @@
  *= require_self
  */
 @import "bootstrap-sprockets";
-    @import "bootstrap";
+@import "bootstrap";
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.headers{
+	position: relative;
+	height: 200px;
+}
+
+.title{
+    font-size: 60px;
+    position: absolute;
+    top:25%;
+    left:0px;
+}
+
+.navs{
+	text-align: right;
+	position: absolute;
+	top:43%;
+	right: 3%;
+}
+
+.form{
+	text-align: right;
+	position: absolute;
+	top:30%;
+	right: 5%;
+}

@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
     def show
         @user = User.with_deleted.find(params[:id])
         @all_answers = Answer.all
-        @answers = @all_answers.where(user_id: @user.id).page(params[:page]).reverse_order
+        @answers = @all_answers.where(user_id: @user.id).page(params[:page])
     end
 
     def update
