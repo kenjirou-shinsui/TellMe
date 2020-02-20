@@ -1,13 +1,13 @@
 
-<strong>フォロワーユーザーリスト(計：<%= @relationships.count %>人)</strong>
+<h3 class="user-text1-follow">フォロワーユーザーリスト(計：<%= @relationships.count %>人)</h3>
 
-<table>
+<table class="table-borderless user-table-follow">
   <% @relationships.each do |relationship| %>
   <tr>
-    <td><%= attachment_image_tag relationship.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-    <td><%= relationship.user.first_name %><%= relationship.user.last_name %></td>
-    <td><%= link_to "ユーザーページへ" ,public_user_path(relationship.user.id) %></td>
-    <td>
+    <td class="user-td-follow"><%= attachment_image_tag relationship.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></td>
+    <td class="user-td-follow"><%= relationship.user.first_name %><%= relationship.user.last_name %></td>
+    <td class="user-td-follow"><%= link_to "ユーザーページへ" ,public_user_path(relationship.user.id) %></td>
+    <td class="user-td-follow">
       <% if current_user.following?(relationship.user) %>
       <%= form_for(current_user.relationships.find_by(follow_id: relationship.user.id), url:"/public/relationships/#{current_user.relationships.find_by(follow_id: relationship.user.id).id}" ,html: { method: :delete }) do |f| %>
       <%= hidden_field_tag :follow_id, relationship.user.id %>

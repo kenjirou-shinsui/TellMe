@@ -1,15 +1,15 @@
 
-<strong>MetooしたAnswers</strong>
+<h3 class="metoo-text1-index">Metooした回答一覧</h3>
 
-<table>
+<table class="table-borderless metoo-table-index">
 	<% @metoos.each do |metoo| %>
 	<tr>
-		<td>Q,<%= metoo.answer.question.title %></td>
-		<td>A,<%= metoo.answer.body %></td>
-		<td><%= link_to public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id), method: :delete do %>
+		<td class="metoo-td-index">Q,<%= metoo.answer.question.title %></td>
+		<td class="metoo-td-index">A,<%= metoo.answer.body %></td>
+		<td class="metoo-td-index"><%= link_to public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id), method: :delete do %>
 			<i class="far fa-handshake" aria-hidden="true" style="color: red;"></i>
 		Me too</td>
-		<td><%= link_to "計#{ metoo.answer.metoos.count }人のユーザー" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
+		<td class="metoo-td-index"><%= link_to "計#{ metoo.answer.metoos.count }人のユーザー" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
 			</tr>
 		<% end %>
 		<%= paginate @metoos, class: "paginate" %>

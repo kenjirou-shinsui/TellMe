@@ -1,22 +1,22 @@
 
-<strong>Questions</strong>
+<h3 class="metoo-text1-question">質問</h3>
 
-<table>
+<table class="table-borderless metoo-table-question">
     <tr>
-        <td>Q,<%= @metoo.answer.question.title %></td>
-        <td>投稿ユーザー：<%= @metoo.answer.user.first_name %><%= @metoo.answer.user.last_name %></td>
-        <td>A,<%= @metoo.answer.body %></td>
+        <td class="metoo-td-question">Q,<%= @metoo.answer.question.title %></td>
+        <td class="metoo-td-question">投稿ユーザー：<%= @metoo.answer.user.first_name %><%= @metoo.answer.user.last_name %></td>
+        <td class="metoo-td-question">A,<%= @metoo.answer.body %></td>
     </tr>
 </table>
 
-<strong>この回答へのMe tooユーザーリスト</strong>
+<h3 class="metoo-text1-show">この回答へのMe tooユーザーリスト</h3>
 
-<table>
+<table class="table-borderless metoo-table-show">
     <% @metoos.each do |metoo| %>
     <tr>
-        <td><%= attachment_image_tag metoo.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-        <td><%= metoo.user.first_name %><%= metoo.user.last_name %></td>
-        <td><%= link_to "ユーザーページへ" ,public_user_path(metoo.user.id) %></td>
+        <td class="metoo-td-show"><%= attachment_image_tag metoo.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></td>
+        <td class="metoo-td-show"><%= metoo.user.first_name %><%= metoo.user.last_name %></td>
+        <td class="metoo-td-show"><%= link_to "ユーザーページへ" ,public_user_path(metoo.user.id) %></td>
     </tr>
     <% end %>
     <%= paginate @metoos, class: "paginate" %>

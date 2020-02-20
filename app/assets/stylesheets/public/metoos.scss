@@ -1,3 +1,53 @@
 // Place all the styles related to the public/Metoos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.metoo-td-index{
+	 height: 100px;
+	font-size: 18px;
+}
+.metoo-table-index{
+	margin: 50px 300px 50px auto;
+	width: 60%;
+}
+.metoo-text1-index{
+	font-size: 30px;
+	padding-right: 40%;
+	text-align: center;
+}
+.metoo-td-question{
+	height: 100px;
+	font-size: 18px;
+}
+.metoo-td-question:nth-child(3){
+	padding-right: 30px;
+}
+.metoo-table-question{
+	margin: 50px 230px 50px auto;
+	width: 60%;
+}
+.metoo-text1-question{
+	text-align: center;
+	padding-right: 50%;
+	font-size: 36px;
+}
+
+.metoo-text1-show{
+		font-size: 30px;
+	padding-right: 30%;
+	text-align: center;
+
+}
+.metoo-table-show{
+	margin: 50px 240px 50px auto;
+	width: 60%;
+	font-size: 16px;
+
+}
+.metoo-td-show{
+   height: 200px;
+	font-size: 18px;
+}
+.metoo-td-show:nth-child(2){
+   padding-right: 80px;
+}
