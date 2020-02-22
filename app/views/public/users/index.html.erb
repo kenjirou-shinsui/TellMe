@@ -1,32 +1,32 @@
 <div class="user-box">
-<p class="user-title-index">ユーザーリスト</p>
+  <p class="user-title-index">ユーザーリスト</p>
 
-<table class="table-borderless user-table-index">
-  <% @users.each do |user| %>
-  <tr>
-    <td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-    <td class="user-td-index"><%= user.first_name %><%= user.last_name %></td>
-    <td class="user-td-index">回答数：<%= Answer.where(user_id:user.id).count %></td>
-    <td class="user-td-index"><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
-    <% if user_signed_in? %>
-    <% unless current_user == user %>
-    <td class="user-td-index">
-      <% if current_user.following?(user) %>
-      <%= form_for(current_user.relationships.find_by(follow_id: user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: user.id).id}" ,html: { method: :delete }) do |f| %>
-      <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+  <table class="table-borderless user-table-index">
+    <% @users.each do |user| %>
+    <tr>
+      <td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+      <td class="user-td-index"><%= user.first_name %><%= user.last_name %></td>
+      <td class="user-td-index">回答数：<%= Answer.where(user_id:user.id).count %></td>
+      <td class="user-td-index"><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
+      <% if user_signed_in? %>
+      <% unless current_user == user %>
+      <td class="user-td-index">
+        <% if current_user.following?(user) %>
+        <%= form_for(current_user.relationships.find_by(follow_id: user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: user.id).id}" ,html: { method: :delete }) do |f| %>
+        <%= hidden_field_tag :follow_id, user.id %>
+        <%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+        <% end %>
+        <% else %>
+        <%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
+        <%= hidden_field_tag :follow_id, user.id %>
+        <%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
+        <% end %>
+        <% end %>
+      </td>
       <% end %>
-      <% else %>
-      <%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
-      <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
       <% end %>
-      <% end %>
-    </td>
+    </tr>
     <% end %>
-    <% end %>
-  </tr>
-  <% end %>
-  <%= paginate @users, class: "paginate" %>
-</table>
+    <%= paginate @users, class: "paginate" %>
+  </table>
 </div>

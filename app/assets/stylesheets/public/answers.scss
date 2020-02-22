@@ -1,3 +1,28 @@
 // Place all the styles related to the public/Answers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.answer-box-edit{
+	text-align: center;
+}
+.answer-title-edit{
+	display: inline-block;
+	text-align: center;
+}
+.answer-text1-edit{
+	font-size: 26px;
+	display: inline-block;
+	margin-bottom: 60px;
+}
+.answer-title2-edit{
+	padding-right: 20%;
+	margin-bottom: 50px;
+
+}
+.answer-text3-edit{
+	font-size: 16px;
+}
+.answer-btn-edit{
+	margin-top: 30px;
+	padding-left: 20%;
+}

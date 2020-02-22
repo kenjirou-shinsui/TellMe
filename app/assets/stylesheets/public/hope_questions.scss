@@ -1,3 +1,24 @@
 // Place all the styles related to the public/HopeQuestions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hope_question-td-index:nth-child(1){
+	text-align: left;
+}
+.hope_question-td-index:nth-child(2){
+	text-align: left;
+}
+
+.hope_question-td-index{
+	height:70px;
+	font-size: 18px;
+}
+
+.hope_question-table-index{
+	margin: 50px auto;
+	width: 40%;
+}
+.hope_question-thanks{
+	text-align: center;
+	margin:150px auto;
+}

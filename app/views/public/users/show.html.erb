@@ -1,108 +1,108 @@
 <div class="user-box">
-<% if user_signed_in? %>
-<% if current_user.id == @user.id %>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-2">
-			<p class="follow-user-show"><%= link_to "フォローリスト" ,follow_public_user_path %></p>
-			<p class="follow-user-show"><%= link_to "フォロワーリスト" ,follower_public_user_path %></p>
-			<p class="follow-user-show"><%= link_to "自分がしたMetoo一覧" ,index_public_metoo_path %></p>
-		</div>
-		<div class="col-xs-10">
-			<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200' %></p>
-
-			<p class="text1-user-show"><%= link_to "→登録情報を変更する" ,edit_public_user_path(@user.id) %></p>
-
-			<table class="table-borderless user-table-show">
-				<tr>
-					<th class="user-th-show">Questions</th>
-					<th class="user-th-show">Answers</th>
-				</tr>
-				<% @answers.each do |answer| %>
-				<tr>
-					<td class="user-td-show">Q,<%= answer.question.title %></td>
-					<td class="user-td-show">A,<%= answer.body %></td>
-					<td class="user-td-show"><%= link_to "編集する" ,edit_public_question_answer_path(answer.question.id,answer.id), class: "btn btn-primary" %></td>
-					<td class="user-td-show"><%= link_to "消去する" ,public_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} , class: "btn btn-danger" %></td>
-					<% if answer.metoos.count == 0 %>
-					<td class="user-td-show">Me too数：0</td>
-					<% else %>
-					<td class="user-td-show"><%= link_to "Me too数：#{answer.metoos.count}" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
-					<% end %>
-				</tr>
-				<% end %>
-			</table>
-
-			<div>
-				<p class="withdraw-user-show"><%= link_to "→退会する",withdraw_public_user_path	,class: "btn btn-warning" %></p>
+	<% if user_signed_in? %>
+	<% if current_user.id == @user.id %>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-2">
+				<p class="follow-user-show"><%= link_to "フォローリスト" ,follow_public_user_path, class: "btn btn-info" %></p>
+				<p class="follow-user-show"><%= link_to "フォロワーリスト" ,follower_public_user_path, class: "btn btn-info" %></p>
+				<p class="follow-user-show"><%= link_to "自分がしたMetoo一覧" ,index_public_metoo_path, class: "btn btn-info" %></p>
 			</div>
+			<div class="col-xs-10">
+				<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200' %></p>
 
+				<p class="text1-user-show"><%= link_to "→登録情報を変更する" ,edit_public_user_path(@user.id) %></p>
+
+				<table class="table-borderless user-table-show">
+					<tr>
+						<th class="user-th-show">Questions</th>
+						<th class="user-th-show">Answers</th>
+					</tr>
+					<% @answers.each do |answer| %>
+					<tr>
+						<td class="user-td-show">Q,<%= answer.question.title %></td>
+						<td class="user-td-show">A,<%= answer.body %></td>
+						<td class="user-td-show"><%= link_to "編集する" ,edit_public_question_answer_path(answer.question.id,answer.id), class: "btn btn-primary" %></td>
+						<td class="user-td-show"><%= link_to "消去する" ,public_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} , class: "btn btn-danger" %></td>
+						<% if answer.metoos.count == 0 %>
+						<td class="user-td-show">Me too数：0</td>
+						<% else %>
+						<td class="user-td-show"><%= link_to "Me too数：#{answer.metoos.count}" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
+						<% end %>
+					</tr>
+					<% end %>
+				</table>
+
+				<div>
+					<p class="withdraw-user-show"><%= link_to "→退会する",withdraw_public_user_path	,class: "btn btn-warning" %></p>
+				</div>
+
+			</div>
 		</div>
 	</div>
-</div>
 
-<% else %>
-<div class="user-box">
-<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
-<div class="follow-btn-user-show">
-	<% if current_user.following?(@user) %>
-	<%= form_for(current_user.relationships.find_by(follow_id: @user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: @user.id).id}" ,html: { method: :delete }) do |f| %>
-	<%= hidden_field_tag :follow_id, @user.id %>
-	<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
-	<% end %>
 	<% else %>
-	<%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
-	<%= hidden_field_tag :follow_id, @user.id %>
-	<%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
-	<% end %>
-	<% end %>
-</div>
-<table class="table-borderless user-table-show2">
-	<tr>
-		<th class="user-th-show">Questions</th>
-		<th class="user-th-show">Answers</th>
-	</tr>
-	<% @answers.each do |answer| %>
-	<tr>
-		<td class="user-td-show">Q,<%= answer.question.title %></td>
-		<td class="user-td-show">A,<%= answer.body %></td>
-		<td class="user-td-show">
-			<% if answer.me_tooed_by?(current_user) %>
-			<%= link_to public_question_answer_metoo_path(answer.question.id,answer.id), method: :delete do %>
-			<i class="far fa-handshake" aria-hidden="true" style="color: red;"></i>
-			Me too数：<%= answer.metoos.count %>
+	<div class="user-box">
+		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+		<div class="follow-btn-user-show">
+			<% if current_user.following?(@user) %>
+			<%= form_for(current_user.relationships.find_by(follow_id: @user.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: @user.id).id}" ,html: { method: :delete }) do |f| %>
+			<%= hidden_field_tag :follow_id, @user.id %>
+			<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
 			<% end %>
 			<% else %>
-			<%= link_to public_question_answer_metoos_path(answer.question.id,answer.id), method: :post do %>
-			<i class="far fa-handshake" aria-hidden="true"></i>
-			Me too数：<%= answer.metoos.count %>
+			<%= form_for(current_user.relationships.build, url:"/public/relationships") do |f| %>
+			<%= hidden_field_tag :follow_id, @user.id %>
+			<%= f.submit "フォローする", class: 'btn btn-primary btn-block' %>
 			<% end %>
 			<% end %>
-		</td>
-	</tr>
-	<% end %>
-</table>
+		</div>
+		<table class="table-borderless user-table-show2">
+			<tr>
+				<th class="user-th-show">Questions</th>
+				<th class="user-th-show">Answers</th>
+			</tr>
+			<% @answers.each do |answer| %>
+			<tr>
+				<td class="user-td-show">Q,<%= answer.question.title %></td>
+				<td class="user-td-show">A,<%= answer.body %></td>
+				<td class="user-td-show">
+					<% if answer.me_tooed_by?(current_user) %>
+					<%= link_to public_question_answer_metoo_path(answer.question.id,answer.id), method: :delete do %>
+					<i class="far fa-handshake" aria-hidden="true" style="color: red;"></i>
+					Me too数：<%= answer.metoos.count %>
+					<% end %>
+					<% else %>
+					<%= link_to public_question_answer_metoos_path(answer.question.id,answer.id), method: :post do %>
+					<i class="far fa-handshake" aria-hidden="true"></i>
+					Me too数：<%= answer.metoos.count %>
+					<% end %>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
 
-<% end %>
-<% else %>
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %>
-
-<table>
-	<tr>
-		<td>Questions</td>
-		<td>Answers</td>
-	</tr>
-	<% @answers.each do |answer| %>
-	<tr>
-		<td>Q,<%= answer.question.title %></td>
-		<td>A,<%= answer.body %></td>
-		<% if answer.metoos.count == 0 %>
-		<td>Me too数：0</td>
-		<% else %>
-		<td><%= link_to "Me too数：#{answer.metoos.count}" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
 		<% end %>
-	</tr>
-	<% end %>
-</table>
-<% end %>
-</div>
+		<% else %>
+		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+
+		<table class="table-borderless user-table-show2">
+			<tr>
+				<th class="user-th-show">Questions</th>
+				<th class="user-th-show">Answers</th>
+			</tr>
+			<% @answers.each do |answer| %>
+			<tr>
+				<td class="user-td-show">Q,<%= answer.question.title %></td>
+				<td class="user-td-show">A,<%= answer.body %></td>
+				<% if answer.metoos.count == 0 %>
+				<td class="user-td-show">Me too数：0</td>
+				<% else %>
+				<td class="user-td-show"><%= link_to "Me too数：#{answer.metoos.count}" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+		<% end %>
+	</div>

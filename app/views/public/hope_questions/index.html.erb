@@ -1,57 +1,57 @@
 
 <% if user_signed_in? %>
+<div class="question-box-index">
+	<h1 class="question-title-index">Hope Questions</h1>
 
-<strong>Hope Questions</strong>
+	<p class="question-text2-index"><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
 
-<p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
-
-<% @hope_questions.each do |hope_question| %>
-
-<table>
-	<tr>
-		<td>HQ,<%= hope_question.hope_body %></td>
-		<td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
-		<% if current_user.id != hope_question.user_id %>
-		<td>
-			<% if hope_question.agreed_by?(current_user) %>
-
-			<%= link_to public_hope_question_agrees_path(hope_question.id), method: :delete do %>
-			<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
-			<%= hope_question.agrees.count %>賛成
-			<% end %>
-
-			<% else %>
-
-			<%= link_to public_hope_question_agrees_path(hope_question.id), method: :post do %>
-			<i class="far fa-thumbs-up" aria-hidden="true"></i>
-			<%= hope_question.agrees.count %> 賛成
-			<% end %>
-		</td>
-		<% end %>
-
-		<% end %>
-		<% if current_user.id == hope_question.user_id %>
-		<td><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-		<% end %>
-	</tr>
-</table>
-<%= paginate @hope_questions, class: "paginate" %>
-	<% end %>
-
-	<% else %>
-
-	<strong>Hope Questions</strong>
-
-	<p><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
-
-	<table>
-			<% @hope_questions.each do |hope_question| %>
+	<table class="table-borderless hope_question-table-index">
+		<% @hope_questions.each do |hope_question| %>
 		<tr>
-			<td>HQ,<%= hope_question.hope_body %></td>
-			<td>投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
-			<td>賛成数：<%= hope_question.agrees.count %></td>
+			<td class="hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
+			<td class="hope_question-td-index">投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+			<% if current_user.id != hope_question.user_id %>
+			<td class="hope_question-td-index">
+				<% if hope_question.agreed_by?(current_user) %>
+
+				<%= link_to public_hope_question_agrees_path(hope_question.id), method: :delete do %>
+				<i class="far fa-thumbs-up" aria-hidden="true" style="color: red;"></i>
+				<%= hope_question.agrees.count %>賛成
+				<% end %>
+
+				<% else %>
+
+				<%= link_to public_hope_question_agrees_path(hope_question.id), method: :post do %>
+				<i class="far fa-thumbs-up" aria-hidden="true"></i>
+				<%= hope_question.agrees.count %> 賛成
+				<% end %>
+			</td>
+			<% end %>
+
+			<% end %>
+			<% if current_user.id == hope_question.user_id %>
+			<td class="hope_question-td-index"><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+			<% end %>
 		</tr>
+		<%= paginate @hope_questions, class: "paginate" %>
 		<% end %>
 	</table>
-	<%= paginate @hope_questions, class: "paginate" %>
+
+	<% else %>
+	<div class="question-box-index">
+		<h1 class="question-title-index">Hope Questions</h1>
+
+		<p class="question-text2-index"><%= link_to "→ログイン・会員登録して聞いてみたい質問を投稿する",root_path %></p>
+
+		<table class="table-borderless hope_question-table-index">
+			<% @hope_questions.each do |hope_question| %>
+			<tr>
+				<td class="hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
+				<td class="hope_question-td-index">投稿ユーザー：<%= link_to "#{hope_question.user.first_name }#{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+				<td class="hope_question-td-index">賛成数：<%= hope_question.agrees.count %></td>
+			</tr>
+			<% end %>
+		</table>
+		<%= paginate @hope_questions, class: "paginate" %>
 		<% end %>
+	</div>

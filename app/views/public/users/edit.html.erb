@@ -14,34 +14,34 @@
 </div>
 <div class="user-box">
 
-<strong>会員情報編集</strong>
+	<p class="user-text1-edit">会員情報編集</p>
 
-<p class="select-user-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
+	<div class="select-user-edit">
+		<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
+		<p><%= f.label :画像 %></p>
+		<%= f.attachment_field :profile_image %>
+	</div>
 
-<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
-<div class="field">
-	<%= f.label :image %>
-	<%= f.attachment_field :profile_image %>
-</div>
+	<table class="table-bordered user-table-edit">
+		<tr>
+			<td>かな氏名</td>
+			<td><%= f.text_field :kana_first_name,autofocus: true,:size=>"36" %>
+				<%= f.text_field :kana_last_name, autofocus: true,:size=>"36" %></td>
+			</tr>
+			<tr>
+				<td>氏名</td>
+				<td><%= f.text_field :first_name,autofocus: true,:size=>"36" %>
+					<%= f.text_field :last_name, autofocus: true,:size=>"36" %></td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td><%= f.text_field :email, autofocus: true,:size=>"74" %></td>
+				</tr>
+			</table>
+			<div>
+				<%= f.submit '更新する'  %>
+			</div>
+			<% end %>
+		</div>
 
-<table class="table-bordered user-table-edit">
-	<tr>
-		<td>かな氏名</td>
-		<td><%= f.text_field :kana_first_name,autofocus: true %>
-		<%= f.text_field :kana_last_name, autofocus: true %></td>
-	</tr>
-	<tr>
-		<td>氏名</td>
-		<td><%= f.text_field :first_name,autofocus: true %>
-		<%= f.text_field :last_name, autofocus: true %></td>
-	</tr>
-	<tr>
-		<td>メールアドレス</td>
-		<td><%= f.text_field :email, autofocus: true %></td>
-	</tr>
-</table>
-<div>
-	<%= f.submit '更新する'  %>
-</div>
-<% end %>
-</div>
+		<p class="user-text2-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>

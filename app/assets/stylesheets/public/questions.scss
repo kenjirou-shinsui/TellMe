@@ -1,3 +1,30 @@
 // Place all the styles related to the public/Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.question-box-index{
+	text-align: center;
+}
+.question-title-index{
+	font-size: 40px;
+	display: inline-block;
+	margin-right: 80px;
+}
+.question-text2-index{
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 60px;
+}
+.question-table-index{
+	margin: auto;
+	width: 70%;
+}
+.question-td-index{
+	height:70px;
+	font-size: 18px;
+}
+.question-offtable-index{
+	width: 60%;
+	margin: 30px auto;
+	text-align: left;
+}

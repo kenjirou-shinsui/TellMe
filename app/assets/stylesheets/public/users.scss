@@ -59,8 +59,8 @@
 }
 .follow-btn-user-show{
 	width: 120px;
-    margin: 0 auto;
-    display: inline-block;
+	margin: 0 auto;
+	display: inline-block;
 }
 
 .user-table-show2{
@@ -68,12 +68,11 @@
 	margin: 30px 120px 20px auto;
 }
 .user-table-edit{
-	width: 40%;
+	width:55%;
 	margin:20px auto;
+	font-size: 20px;
 }
-.select-user-edit{
-	margin: 0 auto;
-}
+
 .user-text1-follow{
 	text-align: center;
 	padding-right: 40%;
@@ -89,4 +88,31 @@
 }
 .user-td-follow:nth-child(4){
 	width: 10%;
+}
+
+.user-text1-edit{
+	text-align: center;
+	padding-right: 40%;
+	font-size: 26px;
+}
+.select-user-edit{
+	margin:30px 700px;
+}
+.user-text2-edit{
+	margin-top: 50px;
+	text-align:center;
+}
+.withdraw-text1{
+	text-align: center;
+}
+.withdraw-text2{
+	display: inline-block;
+	margin-right: 60px;
+}
+.withdraw-text3{
+	display: inline-block;
+}
+.withdraw-box{
+	text-align: center;
+	margin:60px auto;
 }

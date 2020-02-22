@@ -13,10 +13,11 @@
 	<% end %>
 </div>
 
-<strong>Hope Question</strong>
+<div class="answer-box-edit">
+	<h1 class="answer-title2-edit">Hope Question</h1>
 
-<%= form_for [:public, @hope_question] do |f| %>
-<div><%= f.text_area :hope_body,:size=>"42" %></div>
+	<%= form_for [:public, @hope_question] do |f| %>
+	<div class="answer-text3-edit"><%= f.text_area :hope_body,:size=>"42" %></div>
 
-<div><%= f.submit "投稿する" %></div>
-<% end %>
+	<div class="answer-btn-edit"><%= f.submit "投稿する" %></div>
+	<% end %>

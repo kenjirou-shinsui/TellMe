@@ -6,6 +6,7 @@ class Public::SearchsController < ApplicationController
       @users = User.search(params[:search], @model).page(params[:page]).reverse_order
     elsif @model == "2"
       @questions = Question.search(params[:search], @model).page(params[:page]).reverse_order
+      @metoos = Metoo.all
   else @model == "3"
   	@hope_questions = HopeQuestion.search(params[:search], @model).page(params[:page]).reverse_order
     end
