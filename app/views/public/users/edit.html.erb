@@ -18,7 +18,7 @@
 
 	<div class="select-user-edit">
 		<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
-		<p><%= f.label :画像 %></p>
+		<p class="label-text"><%= f.label :画像 %></p>
 		<%= f.attachment_field :profile_image %>
 	</div>
 

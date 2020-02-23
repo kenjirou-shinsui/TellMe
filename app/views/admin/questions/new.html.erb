@@ -1,10 +1,13 @@
+<div class="answer-box-edit">
+	<h1 class="answer-title2-edit">質問作成</h1>
 
-<strong>質問作成</strong>
 
+	<div class="a_question-new-box2">
+		<p class="a_question-text3">Question:</p>
+		<%= form_for(@question, url:"/admin/questions") do |f| %>
+		　<div class="a_question-form1"><%= f.text_area :title, :size=>"42" %>
+		</div>
+		　<div class="answer-btn-edit"><%= f.submit '作成する' %></div>
 
-<P>Q<%= @question.id %></P>
-<%= form_for(@question, url:"/admin/questions") do |f| %>
-　<%= f.text_field :title, :size=>"42" %>
-　<div><%= f.submit '作成する' %></div>
-
-<% end %>
+		<% end %>
+	</div>

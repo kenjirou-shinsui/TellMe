@@ -1,68 +1,72 @@
 
 <% if @model == "1"%>
 
-<strong>ユーザーリスト</strong>
+<div class="user-box">
+	<p class="user-title-index">ユーザーリスト</p>
 
-<table>
-	<% @users.each do |user| %>
-	<tr>
-		<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-		<td><%= user.first_name %><%= user.last_name %></td>
-		<td><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
-		<td>
-		<% if user.deleted_at == nil %>
-		有効
-		<% else %>
-		退会済み
+	<table class="table-borderless user-table-index">
+		<% @users.each do |user| %>
+		<tr>
+			<td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+			<td class="user-td-index"><%= user.first_name %> <%= user.last_name %></td>
+			<td class="user-td-index"><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
+			<td class="user-td-index">
+				<% if user.deleted_at == nil %>
+				有効
+				<% else %>
+				退会済み
+				<% end %>
+			</td>
+		</tr>
 		<% end %>
-	</td>
-	</tr>
-	<% end %>
-	<%= paginate @users, class: "paginate" %>
-</table>
-
-<% elsif @model == "2"%>
-
-<strong>Questions</strong>
-
-<P><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></P>
-
-<table>
-	<% @questions.each do |question| %>
-	<tr>
-		<td>Q<%= question.id %>,</td>
-		<td><%= question.title %></td>
-		<td>回答数：<%= question.answers.count %></td>
-		<td><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
-		<td><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-	</tr>
-	<% end %>
-	<%= paginate @questions, class: "paginate" %>
-</table>
-
-<% elsif @model == "3"%>
+		<%= paginate @users, class: "paginate" %>
+	</table>
 
 
-<strong>Hope questions</strong>
+	<% elsif @model == "2"%>
 
-<table>
-	<% @hope_questions.each do |hope_question| %>
-	<tr>
-		<td>HQ,<%= hope_question.hope_body %></td>
-		<td>投稿ユーザー：<%= link_to "#{ hope_question.user.first_name}#{ hope_question.user.last_name}" ,admin_user_path(hope_question.user.id) %></td>
-		<td>
-		<% if hope_question.agrees.count == 0 %>
-			賛成数：0
-			<% else %>
-		<%= link_to "賛成数：#{hope_question.agrees.count}" ,admin_hope_question_agree_path(hope_question.id,hope_question.agrees.first.id) %>
+	<div class="question-box-index">
+		<h1 class="question-title-index">Questions</h1>
+
+		<p class="question-text2-index"><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></p>
+
+		<table class="table-borderless hope_question-table-index">
+			<% @questions.each do |question| %>
+			<tr>
+				<td class="hope_question-td-index">Q,<%= question.title %></td>
+				<td class="hope_question-td-index"><%= link_to "回答数：#{question.answers.count}  " ,admin_question_answers_path(question.id) %></td>
+				<td class="hope_question-td-index"><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
+				<td class="hope_question-td-index"><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+			</tr>
+			<% end %>
+			<%= paginate @questions, class: "paginate" %>
+		</table>
+	</div>
+
+	<% elsif @model == "3"%>
+
+
+	<div class="a_hope_question_textbox">
+		<h2 class="a_hope_question-title">Hope questions</h2>
+	</div>
+	<table class="table-borderless a_hope_question-table-index">
+		<% @hope_questions.each do |hope_question| %>
+		<tr>
+			<td class="a_hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
+			<td class="a_hope_question-td-index">投稿ユーザー：<%= link_to "#{ hope_question.user.first_name} #{ hope_question.user.last_name}" ,admin_user_path(hope_question.user.id) %></td>
+			<td class="a_hope_question-td-index">
+				<% if hope_question.agrees.count == 0 %>
+				賛成数：0
+				<% else %>
+				<%= link_to "賛成数：#{hope_question.agrees.count}" ,admin_hope_question_agree_path(hope_question.id,hope_question.agrees.first.id) %>
+				<% end %>
+			</td>
+			<td class="a_hope_question-td-index"><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+			<td class="a_hope_question-td-index"><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+		</tr>
 		<% end %>
-	</td>
-		<td><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
-		<td><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-	</tr>
+		<%= paginate @hope_questions, class: "paginate" %>
+	</table>
+
+
 	<% end %>
-	<%= paginate @hope_questions, class: "paginate" %>
-</table>
-
-
-<% end %>

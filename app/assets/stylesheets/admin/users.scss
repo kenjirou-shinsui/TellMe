@@ -1,3 +1,28 @@
 // Place all the styles related to the admin/Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.a_user-title{
+	display: inline-block;
+	margin-right: 10%;
+}
+
+.image-a_user-show{
+	display: inline-block;
+}
+.a_user-table-show{
+	margin:30px 8% 30px auto;
+	width: 60%;
+}
+.a_user-td-show{
+	height: 50px;
+	font-size: 24px;
+	text-align: left;
+}
+.a_user-table2-show{
+	margin:30px 14% 0 auto;
+	width: 60%;
+}
+.a_user-th-show{
+	font-size: 36px;
+}

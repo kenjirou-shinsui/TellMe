@@ -1,43 +1,46 @@
+<div class="user-box">
+	<div>
+		<h2 class="a_user-title">ユーザー詳細</h2>
+		<p class="image-a_user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+	</div>
+	<table class="table-borderless a_user-table-show">
+		<tr>
+			<td class="a_user-td-show">ユーザー名</td>
+			<td class="a_user-td-show"><%= @user.first_name %> <%= @user.last_name %></td>
+		</tr>
+		<tr>
+			<td class="a_user-td-show">E-mail</td>
+			<td class="a_user-td-show"><%= @user.email %></td>
+		</tr>
+		<tr>
+			<td class="a_user-td-show">ステータス</td>
+			<td class="a_user-td-show">
+				<% if @user.deleted_at == nil %>
+				有効
+				<% else %>
+				退会済み
+				<% end %>
+			</td>
+			<td class="a_user-td-show"><div>
+				<%= form_tag(admin_user_path(@user.id), :method => 'patch', data: {confirm: "本当に更新しますか？"}) do %>
+				<%= select_tag(:status, options_for_select([["有効", "1"],["退会","2"]]))%>
+				<%= submit_tag '変更' %>
+				<% end %></td>
+			</tr>
+		</table>
 
-<strong>ユーザー詳細</strong>
-
-<table>
-	<tr>
-		<td>ユーザー名</td>
-		<td><%= @user.first_name %><%= @user.last_name %></td>
-	</tr>
-	<tr>
-		<td>E-mail</td>
-		<td><%= @user.email %></td>
-	</tr>
-	<tr>
-		<td>ステータス</td>
-		<td>
-		<% if @user.deleted_at == nil %>
-		有効
-		<% else %>
-		退会済み
-		<% end %>
-	</td>
-		<td><div>
-        <%= form_tag(admin_user_path(@user.id), :method => 'patch', data: {confirm: "本当に更新しますか？"}) do %>
-        <%= select_tag(:status, options_for_select([["有効", "1"],["退会","2"]]))%>
-        <%= submit_tag '変更' %>
-        <% end %></td>
-	</tr>
-</table>
-
-<table>
-	<tr>
-		<td>Questions</td>
-		<td>Answers</td>
-	</tr>
-	<% @answers.each do |answer| %>
-	<tr>
-		<td>Q,<%= answer.question.title %></td>
-		<td>A,<%= answer.body %></td>
-		<td><%= link_to "delete" ,admin_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-	</tr>
-	<% end %>
-	<%= paginate @answers, class: "paginate" %>
-</table>
+		<table class="table-borderless a_user-table2-show">
+			<tr>
+				<th class="a_user-th-show">Questions</th>
+				<th class="a_user-th-show">Answers</th>
+			</tr>
+			<% @answers.each do |answer| %>
+			<tr>
+				<td class="a_user-td-show">Q,<%= answer.question.title %></td>
+				<td class="a_user-td-show">A,<%= answer.body %></td>
+				<td class="a_user-td-show"><%= link_to "delete" ,admin_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+			</tr>
+			<% end %>
+			<%= paginate @answers, class: "paginate" %>
+		</table>
+	</div>

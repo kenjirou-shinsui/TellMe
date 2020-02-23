@@ -1,19 +1,20 @@
-<strong>ユーザーリスト</strong>
+<div class="user-box">
+	<p class="user-title-index">ユーザーリスト</p>
 
-<table>
-	<% @users.each do |user| %>
-	<tr>
-		<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-		<td><%= user.first_name %><%= user.last_name %></td>
-		<td><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
-		<td>
-		<% if user.deleted_at == nil %>
-		有効
-		<% else %>
-		退会済み
+	<table class="table-borderless user-table-index">
+		<% @users.each do |user| %>
+		<tr>
+			<td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+			<td class="user-td-index"><%= user.first_name %> <%= user.last_name %></td>
+			<td class="user-td-index"><%= link_to "登録情報を見る" ,admin_user_path(user.id) %></td>
+			<td class="user-td-index">
+				<% if user.deleted_at == nil %>
+				有効
+				<% else %>
+				退会済み
+				<% end %>
+			</td>
+		</tr>
 		<% end %>
-	</td>
-	</tr>
-	<% end %>
-	<%= paginate @users, class: "paginate" %>
-</table>
+		<%= paginate @users, class: "paginate" %>
+	</table>

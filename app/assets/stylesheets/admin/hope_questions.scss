@@ -1,3 +1,22 @@
 // Place all the styles related to the admin/HopeQuestions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.a_hope_question_textbox{
+	width: 70%;
+	text-align: left;
+	margin:0 auto;
+}
+.a_hope_question-title{
+	font-size: 36px;
+}
+
+.a_hope_question-table-index{
+	margin:0 auto;
+	width: 70%;
+	margin-top: 30px;
+}
+.a_hope_question-td-index{
+	height: 60px;
+	font-size: 22px;
+}

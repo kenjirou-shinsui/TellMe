@@ -1,10 +1,12 @@
 
-<strong>質問編集</strong>
+<div class="answer-box-edit">
+	<h1 class="answer-title2-edit">質問編集</h1>
 
-<P>Q,</P>
+<div class="a_question-new-box2">
+	<p class="a_question-text3">Question:</p>
 
 <%= form_for(@question, url:"/admin/questions/#{@question.id}") do |f| %>
-　<%= f.text_field :title, :size=>"42" %>
-　<div><%= f.submit '更新する' %></div>
+　<div class="a_question-form1"><%= f.text_area :title, :size=>"42" %></div>
+　<div class="answer-btn-edit"><%= f.submit '更新する' %></div>
 
 <% end %>
