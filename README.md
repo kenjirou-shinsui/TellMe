@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tell Me
 
-Things you may want to cover:
+"Tell Me" is an app that supports communication in business and social settings.
+This app allows you to communicate more closely with others.
 
-* Ruby version
+# Dependency
+ruby '2.5.7'
 
-* System dependencies
+# Setup
+git clone "https://github.com/kenjirou-shinsui/TellMe"
 
-* Configuration
+# Usage
+You will answer the questions provided and create a public profile.
+You can see other people's profiles and understand them more deeply.
+You can also create your own profile with others at the same time to help you engage in a conversation.
 
-* Database creation
+# License
+This software is released under the MIT License.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
