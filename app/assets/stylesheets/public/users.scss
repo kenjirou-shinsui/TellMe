@@ -9,7 +9,7 @@
 // index関連
 .user-title-index{
 	font-size: 30px;
-	padding-right: 60%;
+	padding-right: 50%;
 }
 .user-table-index{
 	margin: 50px auto;
@@ -19,6 +19,7 @@
 
 .user-td-index{
 	height:130px;
+	font-size: 20px;
 }
 .user-td-index:nth-child(5){
 	width:10%;
@@ -34,38 +35,41 @@
 .user-th-show{
 	font-size: 28px;
 }
-
 .user-td-show{
 	height: 80px;
 	text-align: left;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 .image-user-show{
-	padding-right: 300px;
+	padding-right: 10%;
 	display: inline-block;
 }
-
+.name-user-show{
+	font-size: 20px;
+	display: inline-block;
+}
 .text1-user-show{
-	padding-left: 50px;
+	font-size: 16px;
 }
 .withdraw-user-show{
 	text-align: right;
 }
 
 .follow-user-show{
-	margin-bottom: 80px;
+	margin-right: 30px;
 	font-size: 16px;
+	display: inline-block;
 }
 .follow-btn-user-show{
 	width: 120px;
-	margin: 0 auto;
+	margin: 0 70px;
 	display: inline-block;
 }
 
 .user-table-show2{
 	width: 70%;
-	margin: 30px 120px 20px auto;
+	margin: 30px auto;
 }
 .user-table-edit{
 	width:55%;
@@ -100,6 +104,7 @@
 }
 .user-text2-edit{
 	margin-top: 50px;
+	margin-bottom: 70px;
 	text-align:center;
 }
 .withdraw-text1{
@@ -118,4 +123,127 @@
 }
 .label-text{
 	font-size: 20px;
+}
+.withdraw-user-show{
+	margin-bottom: 60px;
+}
+@media screen and (max-width:1024px){
+	.user-td-show{
+		height: 80px;
+		text-align: left;
+		font-size: 14px;
+	}
+	.withdraw-user-show{
+		text-align: right;
+		padding-right: 60px;
+	}
+	.select-user-edit{
+		margin:30px 37%;
+	}
+	.follow-btn-user-show{
+		width: 120px;
+		margin: 0 40px;
+		display: inline-block;
+	}
+	.user-table-edit{
+		width:90%;
+		margin:20px auto;
+		font-size: 20px;
+	}
+	.user-table-follow{
+		margin:30px auto;
+		width: 70%;
+	}
+	.user-table-show2{
+		width: 70%;
+		margin: 30px auto;
+	}
+}
+@media screen and (max-width:425px){
+	.user-title-index{
+		font-size: 20px;
+		padding-right: 50%;
+	}
+	.user-table-index{
+		margin: 50px auto;
+		width: 90%;
+	}
+	.user-td-index{
+		height:130px;
+		font-size: 8px;
+	}
+	.name-user-show{
+		font-size: 14px;
+		margin-right: 10px;
+		display: inline-block;
+	}
+	.user-th-show{
+		font-size: 14px;
+	}
+	.user-table-show{
+		margin: 30px auto;
+		width: 90%;
+	}
+	.user-td-show{
+		height: 80px;
+		text-align: left;
+		font-size: 6px;
+	}
+	.user-td-show:nth-child(1){
+		width:120px;
+	}
+	.user-td-show:nth-child(3){
+		width:70px;
+		text-align: center;
+	}
+	.user-td-show:nth-child(5){
+		width:60px;
+	}
+	.image-user-show{
+		margin:20px 100px;
+	}
+	.follow-user-show{
+		margin-right: 4px;
+		margin-bottom: 20px;
+		font-size: 4px;
+		display: inline-block;
+	}
+	.user-text1-follow{
+		text-align: center;
+		padding-right: 40%;
+		font-size: 14px;
+	}
+	.user-table-follow{
+		margin:30px auto;
+		width: 95%;
+	}
+	.user-td-follow{
+		height: 200px;
+		font-size: 2px;
+	}
+	.user-text1-edit{
+		text-align: center;
+		padding-right: 50%;
+		font-size: 20px;
+	}
+	.select-user-edit{
+		margin:30px 10px;
+	}
+	.user-table-edit{
+		width:90%;
+		margin:20px auto;
+		font-size: 10px;
+	}
+	.withdraw-text1{
+		text-align: center;
+		font-size: 20px;
+	}
+	.withdraw-user-show{
+		text-align: right;
+		padding-right: 30px;
+	}
+	.user-table-show2{
+		width: 70%;
+		margin: 30px auto;
+	}
 }

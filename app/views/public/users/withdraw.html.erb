@@ -1,6 +1,6 @@
 <h1 class="withdraw-text1">退会しますか？</h1>
 
 <div class="withdraw-box">
-	<h3 class="withdraw-text2"><%= link_to "退会しない" ,public_user_path(current_user.id), class: "btn-lg btn-primary" %></h3>
-	<h3 class="withdraw-text3"><%= link_to "退会する",public_user_path(@user.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn-lg btn-danger" %></h3>
+	<h3 class="withdraw-text2"><%= link_to "退会しない" ,public_user_path(current_user.id), class: "btn-lg btn-primary btn-md" %></h3>
+	<h3 class="withdraw-text3"><%= link_to "退会する",public_user_path(@user.id), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn-lg btn-danger btn-md" %></h3>
 </div>

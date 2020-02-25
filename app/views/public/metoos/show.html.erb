@@ -1,5 +1,5 @@
 
-<h3 class="metoo-text1-question">質問</h3>
+<h3 class="metoo-text1-question">Question</h3>
 
 <table class="table-borderless metoo-table-question">
     <tr>
@@ -14,7 +14,7 @@
 <table class="table-borderless metoo-table-show">
     <% @metoos.each do |metoo| %>
     <tr>
-        <td class="metoo-td-show"><%= attachment_image_tag metoo.user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></td>
+        <td class="metoo-td-show"><%= attachment_image_tag metoo.user, :profile_image, :fill, 140, 140, fallback: "no_image.jpg",size:'140x140' %></td>
         <td class="metoo-td-show"><%= metoo.user.first_name %> <%= metoo.user.last_name %></td>
         <td class="metoo-td-show"><%= link_to "ユーザーページへ" ,public_user_path(metoo.user.id) %></td>
     </tr>

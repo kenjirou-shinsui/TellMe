@@ -1,7 +1,7 @@
 
 <div class="d-form">
 
-  <h2>会員登録！</h2>
+  <h2 class="d-registration">会員登録</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -44,7 +44,7 @@
           </tr>
         </table>
         <div class="actions d-text4">
-          <%= f.submit "会員登録" %>
+          <%= f.submit "会員登録！" %>
         </div>
         <% end %>
       </div>

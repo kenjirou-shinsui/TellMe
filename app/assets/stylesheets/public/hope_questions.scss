@@ -22,3 +22,71 @@
 	text-align: center;
 	margin:150px auto;
 }
+.hope_question-title-index{
+	font-size: 40px;
+	display: inline-block;
+	margin-right: 80px;
+}
+.hope_question-text2-index{
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 60px;
+}
+.hope_question-offtext2-index{
+	font-size: 20px;
+	display: inline-block;
+	margin-right: 60px;
+}
+@media screen and (max-width:1024px){
+	.hope_question-table-index{
+		margin: 50px auto;
+		width: 70%;
+	}
+	.hope_question-title-index{
+		font-size: 30px;
+		margin-right: 5%;
+		margin-bottom: 30px;
+	}
+	.hope_question-text2-index{
+		font-size: 20px;
+		padding-right: 10%;
+	}
+	.hope_question-offtext2-index{
+		font-size: 20px;
+		padding-right: 10%;
+	}
+	.hope_question-table-index{
+		margin: 30px auto;
+		width: 90%;
+	}
+	.hope_question-td-index{
+		height:70px;
+		font-size: 18px;
+	}
+	.hope_question-thanks{
+		text-align: center;
+		margin:80px auto;
+		font-size: 30px;
+	}
+}
+@media screen and (max-width:425px){
+	.hope_question-td-index{
+		height:70px;
+		font-size: 12px;
+	}
+	.hope_question-text2-index{
+		font-size: 20px;
+		padding-right: 10px;
+	}
+	.hope_question-offtext2-index{
+		font-size: 15px;
+		text-align: center;
+		padding-right: 0px;
+		margin-right:0px;
+	}
+	.hope_question-thanks{
+		text-align: center;
+		margin:80px auto;
+		font-size: 20px;
+	}
+}

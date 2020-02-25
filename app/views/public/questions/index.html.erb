@@ -11,12 +11,12 @@
         <td class="question-td-index">Q,<%= question.title %></td>
         <% if question.answered_by?(current_user) %>
         <td class="question-td-index">A,<%= question.answers.where(user_id: current_user.id).first.body %></td>
-        <td class="question-td-index"><%= link_to "回答を編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
-        <td class="question-td-index"><%= link_to "回答を消去する",public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+        <td class="question-td-index"><%= link_to "編集する",edit_public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id) %></td>
+        <td class="question-td-index"><%= link_to "消去する",public_question_answer_path(question.id,question.answers.where(user_id: current_user.id).first.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
         <% if question.answers.where(user_id: current_user.id).first.metoos.count == 0 %>
-        <td class="question-td-index">Me too数：0</td>
+        <td class="question-td-index">0Me too</td>
         <% else %>
-        <td class="question-td-index"><%= link_to "Me too数：#{question.answers.where(user_id: current_user.id).first.metoos.count }" ,public_question_answer_metoo_path(question.id,question.answers.where(user_id: current_user.id).first.id,@metoos.where(answer_id: question.answers.where(user_id: current_user.id).first.id).first.id) %></td>
+        <td class="question-td-index"><%= link_to "#{question.answers.where(user_id: current_user.id).first.metoos.count }Me too" ,public_question_answer_metoo_path(question.id,question.answers.where(user_id: current_user.id).first.id,@metoos.where(answer_id: question.answers.where(user_id: current_user.id).first.id).first.id) %></td>
         <% end %>
         <% else %>
         <td class="question-td-index">A,未回答</td>
@@ -31,7 +31,7 @@
     <div class="question-box-index">
         <h1 class="question-title-index">Questions</h1>
         <p class="question-text2-index"><%= link_to "→みんなの聞いてみたい質問一覧",public_hope_questions_path %></p>
-        <p class="question-text2-index"><%= link_to "ログイン・会員登録して回答に答える!",root_path %></p>
+        <p class="question-text3-index"><%= link_to "ログイン・会員登録して回答に答える!",root_path %></p>
         <table class="table-borderless question-offtable-index">
             <% @all_questions.each do |question| %>
             <tr>

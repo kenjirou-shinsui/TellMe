@@ -7,6 +7,7 @@
   <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
         <p class="title">Tell Me</p>
         <div class="form">
           <%= form_tag(public_searchs_path, :method => 'get') do %>
-          <%= text_field_tag :search ,'',:size=>"34",:placeholder => "--空白は半角で検索してください--" %>
+          <%= text_field_tag :search ,'',:size=>"30",:placeholder => "--空白は半角で検索してください--" %>
           <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
           <%= submit_tag '検索', :name => nil %>
           <% end %>

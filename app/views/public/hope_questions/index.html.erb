@@ -1,9 +1,9 @@
 
 <% if user_signed_in? %>
 <div class="question-box-index">
-	<h1 class="question-title-index">Hope Questions</h1>
+	<h1 class="hope_question-title-index">Hope Questions</h1>
 
-	<p class="question-text2-index"><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
+	<p class="hope_question-text2-index"><%= link_to "→聞いてみたい質問を投稿する",new_public_hope_question_path %></p>
 
 	<table class="table-borderless hope_question-table-index">
 		<% @hope_questions.each do |hope_question| %>
@@ -39,9 +39,9 @@
 
 	<% else %>
 	<div class="question-box-index">
-		<h1 class="question-title-index">Hope Questions</h1>
+		<h1 class="hope_question-title-index">Hope Questions</h1>
 
-		<p class="question-text2-index"><%= link_to "→ログイン・会員登録して聞いてみたい質問を投稿する",root_path %></p>
+		<p class="hope_question-offtext2-index"><%= link_to "→ログイン・会員登録して聞いてみたい質問を投稿する",root_path %></p>
 
 		<table class="table-borderless hope_question-table-index">
 			<% @hope_questions.each do |hope_question| %>

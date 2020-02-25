@@ -25,23 +25,23 @@
 	<table class="table-bordered user-table-edit">
 		<tr>
 			<td>かな氏名</td>
-			<td><%= f.text_field :kana_first_name,autofocus: true,:size=>"36" %>
-				<%= f.text_field :kana_last_name, autofocus: true,:size=>"36" %></td>
+			<td><%= f.text_field :kana_first_name,autofocus: true,:size=>"26" %>
+				<%= f.text_field :kana_last_name, autofocus: true,:size=>"26" %></td>
 			</tr>
 			<tr>
 				<td>氏名</td>
-				<td><%= f.text_field :first_name,autofocus: true,:size=>"36" %>
-					<%= f.text_field :last_name, autofocus: true,:size=>"36" %></td>
+				<td><%= f.text_field :first_name,autofocus: true,:size=>"26" %>
+					<%= f.text_field :last_name, autofocus: true,:size=>"26" %></td>
 				</tr>
 				<tr>
 					<td>メールアドレス</td>
-					<td><%= f.text_field :email, autofocus: true,:size=>"74" %></td>
+					<td><%= f.text_field :email, autofocus: true,:size=>"54" %></td>
 				</tr>
 			</table>
 			<div>
 				<%= f.submit '更新する'  %>
 			</div>
 			<% end %>
-		</div>
+		</div>s
 
-		<p class="user-text2-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>
+		<p class="user-text2-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_password_path(@user.id) %></p>

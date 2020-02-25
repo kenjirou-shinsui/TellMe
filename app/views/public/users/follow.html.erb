@@ -4,12 +4,12 @@
 <table class="table-borderless user-table-follow">
 	<% @relationships.each do |relationship| %>
 	<tr>
-		<td class="user-td-follow"><%= attachment_image_tag relationship.follow, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></td>
+		<td class="user-td-follow"><%= attachment_image_tag relationship.follow, :profile_image, :fill, 140, 140, fallback: "no_image.jpg",size:'140x140' %></td>
 		<td class="user-td-follow" class="user-td-follow"><%= relationship.follow.first_name %> <%= relationship.follow.last_name %></td>
 		<td class="user-td-follow"><%= link_to "ユーザーページへ" ,public_user_path(relationship.follow.id) %></td>
 		<td class="user-td-follow"><%= form_for(current_user.relationships.find_by(follow_id: relationship.follow.id),url:"/public/relationships/#{current_user.relationships.find_by(follow_id: relationship.follow.id).id}" ,html: { method: :delete }) do |f| %>
 			<%= hidden_field_tag :follow_id, relationship.follow.id %>
-			<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block' %>
+			<%= f.submit "フォローを外す", class: 'btn btn-danger btn-block btn-sm' %>
 			<% end %></td>
 		</tr>
 		<% end %>

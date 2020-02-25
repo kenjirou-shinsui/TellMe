@@ -26,3 +26,31 @@
 	margin-top: 30px;
 	padding-left: 20%;
 }
+@media screen and (max-width:425px){
+	.answer-box-edit{
+		text-align: center;
+	}
+	.answer-title-edit{
+		display: inline-block;
+		padding-right: 40%;
+		font-size: 26px;
+		margin-bottom: 20px;
+	}
+	.answer-text1-edit{
+		font-size: 16px;
+		display: inline-block;
+		margin-bottom:20px;
+	}
+	.answer-title2-edit{
+		font-size: 26px;
+		padding-right: 40%;
+		margin-bottom: 20px;
+	}
+	.answer-text3-edit{
+		font-size: 12px;
+	}
+	.answer-btn-edit{
+		margin-top: 15px;
+		padding-left: 50%;
+	}
+}
