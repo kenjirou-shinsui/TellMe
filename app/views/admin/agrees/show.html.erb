@@ -15,7 +15,7 @@
 <table class="table-borderless a_agree-table-index">
     <% @agrees.each do |agree| %>
     <tr>
-        <td class="a_agree-td2-index"><%= attachment_image_tag agree.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+        <td class="a_agree-td2-index"><%= attachment_image_tag agree.user, :profile_image, :fill, 220, 300, fallback: "no_image.jpg",size:'100x100' %></td>
         <td class="a_agree-td2-index"><%= agree.user.first_name %> <%= agree.user.last_name %></td>
         <td class="a_agree-td2-index"><%= link_to "ユーザーページへ" ,admin_user_path(agree.user.id) %></td>
     </tr>

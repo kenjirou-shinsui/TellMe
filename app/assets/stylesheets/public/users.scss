@@ -141,11 +141,6 @@
 .withdraw-user-show{
 	margin-bottom: 60px;
 }
-.user-img{
-	background-position: center;
-    width:150px;
-    height:90%;
-}
 @media screen and (max-width:1024px){
 	.user-td-show{
 		height: 80px;
@@ -227,10 +222,10 @@
 		margin:20px 20%;
 	}
 	.follow-btn-user-show{
-	width: 120px;
-	margin: 10px auto;
-	display: inline-block;
-}
+		width: 120px;
+		margin: 10px auto;
+		display: inline-block;
+	}
 	.follow-user-show{
 		margin-right: 4px;
 		margin-bottom: 20px;
@@ -278,9 +273,4 @@
 		width: 70%;
 		margin: 30px auto;
 	}
-	.user-img{
-	background-position: center;
-    width:90px;
-    height:90%;
-}
 }
