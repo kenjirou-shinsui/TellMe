@@ -18,7 +18,7 @@
         <p class="title">Tell Me</p>
         <div class="form">
           <%= form_tag(public_searchs_path, :method => 'get') do %>
-          <%= text_field_tag :search ,'',:size=>"30",:placeholder => "--空白は半角で検索してください--" %>
+          <%= text_field_tag :search ,'',:size=>"26",:placeholder => "空白は半角で検索してください" %>
           <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
           <%= submit_tag '検索', :name => nil %>
           <% end %>
@@ -42,7 +42,7 @@
         <p class="title">Tell Me</p>
         <div class="form">
           <%= form_tag(admin_searchs_path, :method => 'get') do %>
-          <%= text_field_tag :search ,'',:size=>"26",:placeholder => "--空白は半角で検索--" %>
+          <%= text_field_tag :search ,'',:size=>"26",:placeholder => "空白は半角で検索" %>
           <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
           <%= submit_tag '検索', :name => nil %>
           <% end %>
@@ -66,7 +66,7 @@
             <p class="title">Tell Me</p>
             <div class="form">
               <%= form_tag(public_searchs_path, :method => 'get') do %>
-              <%= text_field_tag :search ,'',:size=>"30",:placeholder => "--空白は半角で検索してください--" %>
+              <%= text_field_tag :search ,'',:size=>"26",:placeholder => "空白は半角で検索してください" %>
               <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
               <%= submit_tag '検索', :name => nil %>
               <% end %>

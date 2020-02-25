@@ -94,7 +94,7 @@
         <% @hope_questions.each do |hope_question| %>
         <tr>
             <td class="hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
-            <td class="hope_question-td-index">投稿ユーザー：<%= link_to "#{hope_question.user.first_name } #{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
+            <td class="hope_question-td-index">投稿者:<%= link_to "#{hope_question.user.first_name } #{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
             <% if current_user.id != hope_question.user_id %>
             <td class="hope_question-td-index">
                 <% if hope_question.agreed_by?(current_user) %>

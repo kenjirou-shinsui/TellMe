@@ -1,5 +1,5 @@
-<div class="answer-box-edit">
-	<h1 class="answer-title2-edit">質問作成</h1>
+<div class="a_question-box-new">
+	<h1 class="a_question-title2-new">質問作成</h1>
 
 
 	<div class="a_question-new-box2">
@@ -7,7 +7,7 @@
 		<%= form_for(@question, url:"/admin/questions") do |f| %>
 		　<div class="a_question-form1"><%= f.text_area :title, :size=>"42" %>
 		</div>
-		　<div class="answer-btn-edit"><%= f.submit '作成する' %></div>
+		　<div class="a_question-btn-new"><%= f.submit '作成する' %></div>
 
 		<% end %>
 	</div>

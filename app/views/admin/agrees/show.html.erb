@@ -1,22 +1,22 @@
 <div class="a_hope_question_textbox">
-    <h2 class="a_hope_question-title">Hope questions</h2>
+    <h2 class="a_agree-title">Hope questions</h2>
 </div>
 
 <table class="table-borderless a_agree-table-index">
     <tr>
         <td class="a_agree-td-index">Q,<%= @hope_question.hope_body %></td>
-        <td class="a_agree-td-index">投稿ユーザー：<%= @hope_question.user.first_name %> <%= @hope_question.user.last_name %></td>
+        <td class="a_agree-td-index">投稿者：<%= @hope_question.user.first_name %> <%= @hope_question.user.last_name %></td>
     </tr>
 </table>
 
-<div class="a_hope_question_textbox">
-    <h2 class="a_hope_question-title">この回答へのMe tooユーザーリスト</h2>
+<div class="a_agree_textbox">
+    <h2 class="a_agree-title2">この回答へのMe tooユーザーリスト</h2>
 </div>
 <table class="table-borderless a_agree-table-index">
     <% @agrees.each do |agree| %>
     <tr>
-        <td class="a_agree-td-index"><%= attachment_image_tag agree.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
-        <td class="a_agree-td-index"><%= agree.user.first_name %> <%= agree.user.last_name %></td>
-        <td class="a_agree-td-index"><%= link_to "ユーザーページへ" ,admin_user_path(agree.user.id) %></td>
+        <td class="a_agree-td2-index"><%= attachment_image_tag agree.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100' %></td>
+        <td class="a_agree-td2-index"><%= agree.user.first_name %> <%= agree.user.last_name %></td>
+        <td class="a_agree-td2-index"><%= link_to "ユーザーページへ" ,admin_user_path(agree.user.id) %></td>
     </tr>
     <% end %>

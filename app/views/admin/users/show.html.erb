@@ -1,7 +1,7 @@
 <div class="user-box">
 	<div>
 		<h2 class="a_user-title">ユーザー詳細</h2>
-		<p class="image-a_user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+		<p class="image-a_user-show"><%= attachment_image_tag @user, :profile_image, :fill, 150, 150, fallback: "no_image.jpg",size:'150x150' %></p>
 	</div>
 	<table class="table-borderless a_user-table-show">
 		<tr>
@@ -36,9 +36,9 @@
 			</tr>
 			<% @answers.each do |answer| %>
 			<tr>
-				<td class="a_user-td-show">Q,<%= answer.question.title %></td>
-				<td class="a_user-td-show">A,<%= answer.body %></td>
-				<td class="a_user-td-show"><%= link_to "delete" ,admin_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+				<td class="a_user-td2-show">Q,<%= answer.question.title %></td>
+				<td class="a_user-td2-show">A,<%= answer.body %></td>
+				<td class="a_user-td2-show"><%= link_to "delete" ,admin_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 			</tr>
 			<% end %>
 			<%= paginate @answers, class: "paginate" %>

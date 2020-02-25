@@ -40,7 +40,21 @@
 	text-align: left;
 	font-size: 20px;
 }
-
+.user-td-show:nth-child(3){
+	height: 80px;
+	text-align: center;
+	font-size: 20px;
+}
+.user-td-show:nth-child(4){
+	height: 80px;
+	text-align: center;
+	font-size: 20px;
+}
+.user-td-show:nth-child(5){
+	height: 80px;
+	text-align: center;
+	font-size: 20px;
+}
 .image-user-show{
 	padding-right: 10%;
 	display: inline-block;
@@ -127,6 +141,11 @@
 .withdraw-user-show{
 	margin-bottom: 60px;
 }
+.user-img{
+	background-position: center;
+    width:150px;
+    height:90%;
+}
 @media screen and (max-width:1024px){
 	.user-td-show{
 		height: 80px;
@@ -172,9 +191,12 @@
 		height:130px;
 		font-size: 8px;
 	}
+	.user-td-index:nth-child(2){
+		width: 16%;
+	}
 	.name-user-show{
 		font-size: 14px;
-		margin-right: 10px;
+		margin-right: 10%;
 		display: inline-block;
 	}
 	.user-th-show{
@@ -195,13 +217,20 @@
 	.user-td-show:nth-child(3){
 		width:70px;
 		text-align: center;
+		font-size: 6px;
 	}
 	.user-td-show:nth-child(5){
 		width:60px;
+		font-size: 6px;
 	}
 	.image-user-show{
-		margin:20px 100px;
+		margin:20px 20%;
 	}
+	.follow-btn-user-show{
+	width: 120px;
+	margin: 10px auto;
+	display: inline-block;
+}
 	.follow-user-show{
 		margin-right: 4px;
 		margin-bottom: 20px;
@@ -219,7 +248,10 @@
 	}
 	.user-td-follow{
 		height: 200px;
-		font-size: 2px;
+		font-size: 6px;
+	}
+	.user-td-follow:nth-child(2){
+		width: 15%;
 	}
 	.user-text1-edit{
 		text-align: center;
@@ -246,4 +278,9 @@
 		width: 70%;
 		margin: 30px auto;
 	}
+	.user-img{
+	background-position: center;
+    width:90px;
+    height:90%;
+}
 }

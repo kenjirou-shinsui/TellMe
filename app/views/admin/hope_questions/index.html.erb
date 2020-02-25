@@ -5,7 +5,7 @@
 	<% @hope_questions.each do |hope_question| %>
 	<tr>
 		<td class="a_hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
-		<td class="a_hope_question-td-index">投稿ユーザー：<%= link_to "#{ hope_question.user.first_name} #{ hope_question.user.last_name}" ,admin_user_path(hope_question.user.id) %></td>
+		<td class="a_hope_question-td-index">投稿者：<%= link_to "#{ hope_question.user.first_name} #{ hope_question.user.last_name}" ,admin_user_path(hope_question.user.id) %></td>
 		<td class="a_hope_question-td-index">
 			<% if hope_question.agrees.count == 0 %>
 			賛成数：0
@@ -13,7 +13,7 @@
 			<%= link_to "賛成数：#{hope_question.agrees.count}" ,admin_hope_question_agree_path(hope_question.id,hope_question.agrees.first.id) %>
 			<% end %>
 		</td>
-		<td class="a_hope_question-td-index"><%= hope_question.created_at.strftime('%Y/%m/%d/%H:%M') %></td>
+		<td class="a_hope_question-td-index"><%= hope_question.created_at.strftime('%Y/%m/%d') %></td>
 		<td class="a_hope_question-td-index"><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>

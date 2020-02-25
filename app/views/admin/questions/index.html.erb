@@ -1,16 +1,16 @@
 
-<div class="question-box-index">
-	<h1 class="question-title-index">Questions</h1>
+<div class="a_question-box-index">
+	<h1 class="a_question-title-index">Questions</h1>
 
-	<p class="question-text2-index"><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></p>
+	<p class="a_question-text2-index"><%= link_to "→新たに質問を作成する" ,new_admin_question_path %></p>
 
-	<table class="table-borderless hope_question-table-index">
+	<table class="table-borderless a_question-table-index">
 		<% @questions.each do |question| %>
 		<tr>
-			<td class="hope_question-td-index">Q,<%= question.title %></td>
-			<td class="hope_question-td-index"><%= link_to "回答数：#{question.answers.count}  " ,admin_question_answers_path(question.id) %></td>
-			<td class="hope_question-td-index"><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
-			<td class="hope_question-td-index"><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+			<td class="a_question-td-index">Q,<%= question.title %></td>
+			<td class="a_question-td-index"><%= link_to "回答数：#{question.answers.count}  " ,admin_question_answers_path(question.id) %></td>
+			<td class="a_question-td-index"><%= link_to "編集する" ,edit_admin_question_path(question.id) %></td>
+			<td class="a_question-td-index"><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		</tr>
 		<% end %>
 		<%= paginate @questions, class: "paginate" %>

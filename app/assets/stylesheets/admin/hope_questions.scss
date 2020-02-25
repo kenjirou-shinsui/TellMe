@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .a_hope_question_textbox{
-	width: 70%;
+	width: 80%;
 	text-align: left;
 	margin:0 auto;
 }
@@ -14,9 +14,35 @@
 .a_hope_question-table-index{
 	margin:0 auto;
 	width: 70%;
-	margin-top: 30px;
+	margin:30px auto;
 }
 .a_hope_question-td-index{
 	height: 60px;
 	font-size: 22px;
+}
+@media screen and (max-width:1024px){
+	.a_hope_question-td-index{
+		height: 60px;
+		font-size: 16px;
+	}
+}
+@media screen and (max-width:425px){
+	.a_hope_question-td-index{
+		height: 60px;
+		font-size: 8px;
+	}
+	.a_hope_question-td-index:nth-child(2){
+		width: 100px;
+	}
+	.a_hope_question-td-index:nth-child(3){
+		width: 60px;
+	}
+	.a_hope_question-table-index{
+		margin:0 auto;
+		width: 80%;
+		margin:30px auto;
+	}
+	.a_hope_question-title{
+		font-size: 24px;
+	}
 }

@@ -10,3 +10,51 @@
 	text-align: center;
 	font-size: 22px;
 }
+.a_agree-title{
+	font-size: 36px;
+	padding-left: 10%;
+}
+.a_agree_textbox{
+	width: 80%;
+	text-align: left;
+	margin:0 auto;
+}
+.a_agree-title2{
+	font-size: 30px;
+	padding-left: 10%;
+}
+.a_agree-td2-index{
+	text-align: center;
+	font-size: 22px;
+	height: 130px;
+	padding-left: 10%;
+}
+@media screen and (max-width:425px){
+	.a_agree-title{
+		font-size: 20px;
+		padding-left: 10%;
+	}
+	.a_agree-table-index{
+		margin: 40px auto 80px auto;
+		width: 70%;
+	}
+	.a_agree-td-index{
+		text-align: center;
+		font-size: 12px;
+	}
+	.a_agree-title2{
+		font-size: 14px;
+		padding-left: 10%;
+	}
+	.a_agree-td2-index{
+		text-align: center;
+		font-size: 10px;
+		height: 130px;
+	}
+	.a_agree-td2-index:nth-child(2){
+		width: 80px;
+	}
+	.a_agree-td2-index:nth-child(3){
+		width: 110px;
+	}
+}
