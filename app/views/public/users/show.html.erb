@@ -2,7 +2,7 @@
 	<% if user_signed_in? %>
 	<% if current_user.id == @user.id %>
 	<div class="container">
-				<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 200, 320, fallback: "no_image.jpg",size:'200x200' %></p>
+				<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg",size:'200x200' %></p>
 
 				<p class="follow-user-show"><%= link_to "フォローリスト" ,follow_public_user_path, class: "btn btn-info" %></p>
 				<p class="follow-user-show"><%= link_to "フォロワーリスト" ,follower_public_user_path, class: "btn btn-info" %></p>
@@ -39,7 +39,7 @@
 
 	<% else %>
 	<div class="user-box">
-		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill,250, 300, fallback: "no_image.jpg",size:'180x180' %></p>
 
 		<p class="name-user-show">ユーザー名：<%= @user.first_name %> <%= @user.last_name %></p>
 
@@ -85,7 +85,7 @@
 
 		<% end %>
 		<% else %>
-		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "no_image.jpg",size:'180x180' %></p>
+		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg",size:'180x180' %></p>
 
 		<p class="name-user-show">ユーザー名：<%= @user.first_name %> <%= @user.last_name %></p>
 

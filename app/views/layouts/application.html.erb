@@ -23,16 +23,21 @@
           <%= submit_tag '検索', :name => nil %>
           <% end %>
         </div>
-        <div class="navs">
-          <nav>
-            <ul class="nav navbar-nav lis">
-              <li><%= link_to "マイページ" ,public_user_path(current_user.id) %></li>
-              <li><%= link_to "アバウト" ,about_public_home_path %></li>
-              <li><%= link_to "会員一覧" ,public_users_path %></li>
-              <li><%= link_to "質問一覧" ,public_questions_path %></li>
-              <li><%= link_to "ログアウト" ,destroy_user_session_path,method: :delete %></li>
-            </ul>
-          </nav>
+        <div id="sp-menu">
+          <ul class="hamberger-ul">
+            <li><%= link_to "マイページ" ,public_user_path(current_user.id) %></li>
+            <li><%= link_to "アバウト" ,about_public_home_path %></li>
+            <li><%= link_to "会員一覧" ,public_users_path %></li>
+            <li><%= link_to "質問一覧" ,public_questions_path %></li>
+            <li><%= link_to "ログアウト" ,destroy_user_session_path,method: :delete %></li>
+          </ul>
+        </div>
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
         </div>
       </div>
     </div>
@@ -47,45 +52,54 @@
           <%= submit_tag '検索', :name => nil %>
           <% end %>
         </div>
-        <div class="navs">
-          <nav>
-            <ul class="nav navbar-nav lis">
-              <li><%= link_to "会員一覧" ,admin_users_path %></li>
-              <li><%= link_to "質問一覧" ,admin_questions_path %></li>
-              <li><%= link_to "希望質問一覧" ,admin_hope_questions_path %></li>
-              <li><%= link_to "ログアウト" ,destroy_admin_session_path,method: :delete %></li>
-            </ul>
-          </nav>
-          <div>
-          </div>
+        <div id="sp-menu">
+          <ul class="hamberger-ul">
+            <li><%= link_to "会員一覧" ,admin_users_path %></li>
+            <li><%= link_to "質問一覧" ,admin_questions_path %></li>
+            <li><%= link_to "希望質問一覧" ,admin_hope_questions_path %></li>
+            <li><%= link_to "ログアウト" ,destroy_admin_session_path,method: :delete %></li>
+          </ul>
         </div>
-
-        <% else %>
-        <div class="container">
-          <div class="row headers">
-            <p class="title">Tell Me</p>
-            <div class="form">
-              <%= form_tag(public_searchs_path, :method => 'get') do %>
-              <%= text_field_tag :search ,'',:size=>"26",:placeholder => "空白は半角で検索してください" %>
-              <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
-              <%= submit_tag '検索', :name => nil %>
-              <% end %>
-            </div>
-            <div class="navs">
-              <nav>
-                <ul class="nav navbar-nav lis">
-                  <li><%= link_to "トップ" ,root_path %></li>
-                  <li><%= link_to "アバウト" ,about_public_home_path %></li>
-                  <li><%= link_to "会員一覧" ,public_users_path %></li>
-                  <li><%= link_to "質問一覧" ,public_questions_path %></li>
-                  <li><%= link_to "ログイン" ,new_user_session_path %></li>
-                </ul>
-              </nav>
-              <div>
-              </div>
-            </div>
-            <% end %>
-          </header>
-          <%= yield %>
-        </body>
-        </html>
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div class="container">
+      <div class="row headers">
+        <p class="title">Tell Me</p>
+        <div class="form">
+          <%= form_tag(public_searchs_path, :method => 'get') do %>
+          <%= text_field_tag :search ,'',:size=>"26",:placeholder => "空白は半角で検索してください" %>
+          <%= select_tag(:model, options_for_select([["ユーザー", "1"],["質問","2"],["希望質問","3"]]))%>
+          <%= submit_tag '検索', :name => nil %>
+          <% end %>
+        </div>
+        <div id="sp-menu">
+          <ul class="hamberger-ul">
+            <li><%= link_to "トップ" ,root_path %></li>
+            <li><%= link_to "アバウト" ,about_public_home_path %></li>
+            <li><%= link_to "会員一覧" ,public_users_path %></li>
+            <li><%= link_to "質問一覧" ,public_questions_path %></li>
+            <li><%= link_to "ログイン" ,new_user_session_path %></li>
+          </ul>
+        </div>
+        <div id="hm-icon">
+          <a class="menu-trigger" href="#">
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </header>
+  <%= yield %>
+</body>
+</html>
