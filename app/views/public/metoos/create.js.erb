@@ -1,3 +1,2 @@
-$(document).on('turbolinks:load', function() {
-	$("#metoo-<%= @answer.id %>").html("<%= j(render partial: 'users/metoo', locals: { answer: @answer }) %>");
-});
+$("#metoo-<%= @answer.id %>").html("<%= j(render partial: 'metoo', locals: { answer: @answer }) %>");
+

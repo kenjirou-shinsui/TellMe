@@ -70,8 +70,7 @@
 				<td class="user-td-show">Q,<%= answer.question.title %></td>
 				<td class="user-td-show">A,<%= answer.body %></td>
 				<td id="metoo-<%= answer.id %>" class="user-td-show">
-					<%= render partial: "metoo", locals: { answer: answer } %>
-					<%= answer.metoos.count %>Me too
+					<%= render partial: "public/metoos/metoo", locals: { answer: answer } %>
 				</td>
 			</tr>
 			<% end %>

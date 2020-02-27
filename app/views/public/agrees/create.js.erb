@@ -1,3 +1,2 @@
-$(document).on('turbolinks:load', function() {
-$("#agree-<%= @hope_question.id %>").html("<%= j(render partial: 'agrees/agree', locals: {hope_question: @hope_questions }) %>");
-});
+$("#agree-<%= @hope_question.id %>").html("<%= j(render partial: 'public/agrees/agree', locals: {hope_question: @hope_question }) %>");
+

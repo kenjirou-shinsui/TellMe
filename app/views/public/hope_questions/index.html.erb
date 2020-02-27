@@ -11,7 +11,9 @@
 			<td class="hope_question-td-index">HQ,<%= hope_question.hope_body %></td>
 			<td class="hope_question-td-index">投稿者:<%= link_to "#{hope_question.user.first_name } #{hope_question.user.last_name }" ,public_user_path(hope_question.user_id) %></td>
 			<% if current_user.id != hope_question.user_id %>
-				<%= render partial: "hope_questions", locals: { hope_question: hope_question } %>
+				<td id="agree-<%= hope_question.id %>" class="hope_question-td-index">
+					<%= render partial: "hope_questions", locals: { hope_question: hope_question } %>
+				</td>
 			<% end %>
 			<% if current_user.id == hope_question.user_id %>
 			<td class="hope_question-td-index"><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
