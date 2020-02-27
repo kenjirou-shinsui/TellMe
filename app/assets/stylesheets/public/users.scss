@@ -5,8 +5,6 @@
 .user-box{
 	text-align: center;
 }
-
-// index関連
 .user-title-index{
 	font-size: 30px;
 	padding-right: 50%;
@@ -24,9 +22,6 @@
 .user-td-index:nth-child(5){
 	width:10%;
 }
-
-// show関連
-
 .user-table-show{
 	margin: 30px auto 20px;
 	width: 90%;
@@ -278,7 +273,7 @@
 		margin: 30px auto;
 	}
 	.user-img{
-	width: 60px;
-	height: 90%;
-}
+		width: 60px;
+		height: 90%;
+	}
 }

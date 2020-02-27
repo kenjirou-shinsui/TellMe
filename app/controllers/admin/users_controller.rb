@@ -15,12 +15,12 @@ class Admin::UsersController < ApplicationController
     def update
         @user = User.with_deleted.find(params[:id])
         @status = params[:status]
-    if @status == "1"
-      @user.restore
-    else
-      @user.destroy
-    end
-    redirect_to admin_user_path(@user.id)
+        if @status == "1"
+            @user.restore
+        else
+            @user.destroy
+        end
+        redirect_to admin_user_path(@user.id)
     end
 
 end
