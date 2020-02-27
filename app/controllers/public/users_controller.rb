@@ -4,13 +4,13 @@ class Public::UsersController < ApplicationController
     before_action :login_check,only: [:edit,:withdraw,:update,:destroy]
 
     def index
-        @users = User.page(params[:page]).reverse_order
+        @users = User.page(params[:page]).per(10).reverse_order
     end
 
     def show
         @user = User.find(params[:id])
-        @all_answers = Answer.all.page(params[:page]).order('question_id')
-        @answers = @all_answers.where(user_id: @user.id)
+        @all_answers = Answer.all.page(params[:page]).per(10).order('question_id')
+        @answers = @all_answers.where(user_id: @user.id).per(10)
     end
 
     def edit
@@ -22,11 +22,13 @@ class Public::UsersController < ApplicationController
     end
 
     def follow
-      @relationships = Relationship.where(user_id:current_user.id).page(params[:page]).reverse_order
+      @all_relationships =  Relationship.where(user_id:current_user.id)
+      @relationships = Relationship.where(user_id:current_user.id).page(params[:page]).per(10).reverse_order
     end
 
     def follower
-      @relationships = Relationship.where(follow_id:current_user.id).page(params[:page]).reverse_order
+        @all_relationships = Relationship.where(follow_id:current_user.id)
+      @relationships = Relationship.where(follow_id:current_user.id).page(params[:page]).per(10).reverse_order
     end
 
     def update
@@ -47,7 +49,7 @@ class Public::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:email,:profile_image)
+        params.require(:user).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:email,:profile_image,:deleted_at)
     end
 
     def login_check

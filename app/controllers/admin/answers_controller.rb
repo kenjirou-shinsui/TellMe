@@ -4,7 +4,7 @@ class Admin::AnswersController < ApplicationController
 
 	def index
 		@question = Question.find(params[:question_id])
-        @answers = @question.answers.page(params[:page]).reverse_order
+        @answers = @question.answers.page(params[:page]).per(10).reverse_order
 	end
 
 	def destroy

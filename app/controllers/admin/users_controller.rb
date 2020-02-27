@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
     before_action :authenticate_admin!
 
     def index
-        @users = User.with_deleted.page(params[:page]).reverse_order
+        @users = User.with_deleted.page(params[:page]).per(10).reverse_order
     end
 
     def show

@@ -19,8 +19,10 @@
 			</td>
 		</tr>
 		<% end %>
-		<%= paginate @users, class: "paginate" %>
 	</table>
+	<div class="paginate">
+        <%= paginate @users, class: "paginate" %>
+    </div>
 
 
 	<% elsif @model == "2"%>
@@ -39,9 +41,11 @@
 			<td class="a_question-td-index"><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		</tr>
 		<% end %>
-		<%= paginate @questions, class: "paginate" %>
 	</table>
 </div>
+<div class="paginate">
+        <%= paginate @questions, class: "paginate" %>
+    </div>
 
 	<% elsif @model == "3"%>
 
@@ -65,8 +69,10 @@
 			<td class="a_hope_question-td-index"><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		</tr>
 		<% end %>
-		<%= paginate @hope_questions, class: "paginate" %>
 	</table>
+	<div class="paginate">
+        <%= paginate @hope_questions, class: "paginate" %>
+    </div>
 
 
 	<% end %>

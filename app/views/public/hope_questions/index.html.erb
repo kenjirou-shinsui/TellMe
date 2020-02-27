@@ -33,9 +33,11 @@
 			<td class="hope_question-td-index"><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 			<% end %>
 		</tr>
-		<%= paginate @hope_questions, class: "paginate" %>
 		<% end %>
 	</table>
+	<div class="paginate">
+        <%= paginate @hope_questions, class: "paginate" %>
+    </div>
 
 	<% else %>
 	<div class="question-box-index">
@@ -52,6 +54,8 @@
 			</tr>
 			<% end %>
 		</table>
-		<%= paginate @hope_questions, class: "paginate" %>
+		<div class="paginate">
+        <%= paginate @hope_questions, class: "paginate" %>
+    </div>
 		<% end %>
 	</div>

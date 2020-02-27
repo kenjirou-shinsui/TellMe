@@ -16,5 +16,7 @@
 			</td>
 		</tr>
 		<% end %>
-		<%= paginate @users, class: "paginate" %>
 	</table>
+	<div class="paginate">
+        <%= paginate @users, class: "paginate" %>
+    </div>

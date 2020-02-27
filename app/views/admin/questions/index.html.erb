@@ -13,6 +13,8 @@
 			<td class="a_question-td-index"><%= link_to "削除する" ,admin_question_path(question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 		</tr>
 		<% end %>
-		<%= paginate @questions, class: "paginate" %>
 	</table>
+	<div class="paginate">
+        <%= paginate @questions, class: "paginate" %>
+    </div>
 </div>

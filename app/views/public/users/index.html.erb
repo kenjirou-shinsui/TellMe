@@ -4,7 +4,7 @@
   <table class="table-borderless user-table-index">
     <% @users.each do |user| %>
     <tr>
-      <td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 180,250, fallback: "no_image.jpg",size:'100x100' %></td>
+      <td class="user-td-index"><%= attachment_image_tag user, :profile_image, :fill, 180,250, fallback: "no_image.jpg", class: "user-img" %></td>
       <td class="user-td-index"><%= user.first_name %> <%= user.last_name %></td>
       <td class="user-td-index">回答数：<%= Answer.where(user_id:user.id).count %></td>
       <td class="user-td-index"><%= link_to "ユーザーページへ" ,public_user_path(user.id) %></td>
@@ -27,6 +27,8 @@
       <% end %>
     </tr>
     <% end %>
-    <%= paginate @users, class: "paginate" %>
   </table>
+  <div class="paginate">
+        <%= paginate @users, class: "paginate" %>
+    </div>
 </div>

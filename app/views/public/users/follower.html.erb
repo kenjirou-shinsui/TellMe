@@ -1,5 +1,5 @@
 
-<h3 class="user-text1-follow">フォロワーユーザーリスト(計：<%= @relationships.count %>人)</h3>
+<h3 class="user-text1-follow">フォロワーユーザーリスト(計：<%= @all_relationships.count %>人)</h3>
 
 <table class="table-borderless user-table-follow">
   <% @relationships.each do |relationship| %>
@@ -22,5 +22,7 @@
     </td>
   </tr>
   <% end %>
-  <%= paginate @relationships, class: "paginate" %>
 </table>
+<div class="paginate">
+        <%= paginate @relationships, class: "paginate" %>
+    </div>

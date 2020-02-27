@@ -141,6 +141,10 @@
 .withdraw-user-show{
 	margin-bottom: 60px;
 }
+.user-img{
+	width: 120px;
+	height: 90%;
+}
 @media screen and (max-width:1024px){
 	.user-td-show{
 		height: 80px;
@@ -183,7 +187,7 @@
 		width: 90%;
 	}
 	.user-td-index{
-		height:130px;
+		height:80px;
 		font-size: 8px;
 	}
 	.user-td-index:nth-child(2){
@@ -235,7 +239,7 @@
 	.user-text1-follow{
 		text-align: center;
 		padding-right: 40%;
-		font-size: 14px;
+		font-size: 12px;
 	}
 	.user-table-follow{
 		margin:30px auto;
@@ -273,4 +277,8 @@
 		width: 70%;
 		margin: 30px auto;
 	}
+	.user-img{
+	width: 60px;
+	height: 90%;
+}
 }

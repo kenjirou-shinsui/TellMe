@@ -30,6 +30,9 @@
 					</tr>
 					<% end %>
 				</table>
+				<div class="paginate">
+        <%= paginate @answers, class: "paginate" %>
+    </div>
 
 				<div>
 					<p class="withdraw-user-show"><%= link_to "→退会する",withdraw_public_user_path	,class: "btn btn-warning" %></p>
@@ -82,6 +85,9 @@
 			</tr>
 			<% end %>
 		</table>
+		<div class="paginate">
+        <%= paginate @answers, class: "paginate" %>
+    </div>
 
 		<% end %>
 		<% else %>
@@ -107,5 +113,8 @@
 			</tr>
 			<% end %>
 		</table>
+		<div class="paginate">
+        <%= paginate @answers, class: "paginate" %>
+    </div>
 		<% end %>
 	</div>

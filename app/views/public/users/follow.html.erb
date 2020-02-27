@@ -13,7 +13,9 @@
 			<% end %></td>
 		</tr>
 		<% end %>
-		<%= paginate @relationships, class: "paginate" %>
 	</table>
+	<div class="paginate">
+        <%= paginate @relationships, class: "paginate" %>
+    </div>
 
 

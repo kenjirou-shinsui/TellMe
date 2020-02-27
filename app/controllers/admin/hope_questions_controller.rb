@@ -3,7 +3,7 @@ class Admin::HopeQuestionsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		@hope_questions = HopeQuestion.page(params[:page]).reverse_order
+		@hope_questions = HopeQuestion.page(params[:page]).per(10).reverse_order
 	end
 
 	def destroy

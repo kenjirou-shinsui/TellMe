@@ -24,9 +24,10 @@
             <% end %>
         </tr>
         <% end %>
-        <%= paginate @all_questions, class: "paginate" %>
     </table>
-
+ <div class="paginate">
+        <%= paginate @all_questions, class: "paginate" %>
+    </div>
     <% else %>
     <div class="question-box-index">
         <h1 class="question-title-index">Questions</h1>
@@ -39,8 +40,9 @@
                 <td class="question-td-index">回答ユーザー数：<%= question.answers.count %></td>
             </tr>
             <% end %>
-            <%= paginate @all_questions, class: "paginate" %>
         </table>
-
+        <div class="paginate">
+        <%= paginate @all_questions, class: "paginate" %>
+    </div>
         <% end %>
     </div>

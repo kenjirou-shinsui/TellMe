@@ -16,8 +16,8 @@
 
 	<p class="user-text1-edit">会員情報編集</p>
 
-	<div class="select-user-edit">
 		<%= form_for(@user, url:"/public/users/#{@user.id}") do |f| %>
+		<div class="select-user-edit">
 		<p class="label-text"><%= f.label :画像 %></p>
 		<%= f.attachment_field :profile_image %>
 	</div>
@@ -44,4 +44,4 @@
 			<% end %>
 		</div>
 
-		<p class="user-text2-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_password_path(@user.id) %></p>
+		<p class="user-text2-edit"><%= link_to "→パスワードを変更する場合はこちら" ,edit_user_registration_path %></p>

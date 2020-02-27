@@ -7,7 +7,7 @@ class Public::HopeQuestionsController < ApplicationController
     end
 
     def index
-        @hope_questions = HopeQuestion.page(params[:page]).reverse_order
+        @hope_questions = HopeQuestion.page(params[:page]).per(10).reverse_order
     end
 
     def thanks

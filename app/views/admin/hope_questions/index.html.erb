@@ -17,5 +17,7 @@
 		<td class="a_hope_question-td-index"><%= link_to "delete" ,admin_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>
-	<%= paginate @hope_questions, class: "paginate" %>
 </table>
+<div class="paginate">
+        <%= paginate @hope_questions, class: "paginate" %>
+    </div>

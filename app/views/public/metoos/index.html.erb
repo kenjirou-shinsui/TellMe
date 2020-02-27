@@ -13,7 +13,9 @@
 		<td class="metoo-td-index"><%= link_to "計#{ metoo.answer.metoos.count }人" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
 	</tr>
 	<% end %>
-	<%= paginate @metoos, class: "paginate" %>
 	<% end %>
 </table>
+ <div class="paginate">
+        <%= paginate @metoos, class: "paginate" %>
+    </div>
 
