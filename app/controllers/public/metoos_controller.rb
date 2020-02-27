@@ -13,17 +13,15 @@ class Public::MetoosController < ApplicationController
     end
 
     def create
-        answer = Answer.find(params[:answer_id])
-        metoo = current_user.metoos.new(answer_id: answer.id)
-        metoo.save
-        redirect_back(fallback_location: root_path)
+        @answer = Answer.find(params[:answer_id])
+        @metoo = Metoo.create(user_id: current_user.id, answer_id: @answer.id)
+        @metoo.save
     end
 
     def destroy
-        answer = Answer.find(params[:answer_id])
-        metoo = current_user.metoos.find_by(answer_id: answer.id)
-        metoo.destroy
-        redirect_back(fallback_location: root_path)
+        @answer = Answer.find(params[:answer_id])
+        @metoo = Metoo.find_by(user_id: current_user.id, answer_id: @answer.id)
+        @metoo.destroy
     end
 
 end

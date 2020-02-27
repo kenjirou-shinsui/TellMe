@@ -7,15 +7,15 @@
 		<td class="metoo-td-index">Q,<%= metoo.answer.question.title %></td>
 		<td class="metoo-td-index">回答者:<%= metoo.answer.user.first_name %> <%= metoo.answer.user.last_name %></td>
 		<td class="metoo-td-index">A,<%= metoo.answer.body %></td>
-		<td class="metoo-td-index"><%= link_to public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id), method: :delete do %>
-			<i class="far fa-handshake" aria-hidden="true" style="color: red;"></i>
-		Me too</td>
+		<td id="metoo-<%= metoo.answer.id %>" class="metoo-td-index">
+			<%= render partial: "metoo", locals: { answer: metoo.answer,metoo:metoo } %>
+			Me too
+		</td>
 		<td class="metoo-td-index"><%= link_to "計#{ metoo.answer.metoos.count }人" ,public_question_answer_metoo_path(metoo.answer.question.id,metoo.answer.id,metoo.id) %></td>
 	</tr>
 	<% end %>
-	<% end %>
 </table>
- <div class="paginate">
-        <%= paginate @metoos, class: "paginate" %>
-    </div>
+<div class="paginate">
+	<%= paginate @metoos, class: "paginate" %>
+</div>
 

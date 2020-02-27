@@ -2,43 +2,43 @@
 	<% if user_signed_in? %>
 	<% if current_user.id == @user.id %>
 	<div class="container">
-				<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg",size:'200x200' %></p>
+		<p class="image-user-show"><%= attachment_image_tag @user, :profile_image, :fill, 250, 300, fallback: "no_image.jpg",size:'200x200' %></p>
 
-				<p class="follow-user-show"><%= link_to "フォローリスト" ,follow_public_user_path, class: "btn btn-info" %></p>
-				<p class="follow-user-show"><%= link_to "フォロワーリスト" ,follower_public_user_path, class: "btn btn-info" %></p>
-				<p class="follow-user-show"><%= link_to "自分がしたMetoo一覧" ,index_public_metoo_path, class: "btn btn-info" %></p>
+		<p class="follow-user-show"><%= link_to "フォローリスト" ,follow_public_user_path, class: "btn btn-info" %></p>
+		<p class="follow-user-show"><%= link_to "フォロワーリスト" ,follower_public_user_path, class: "btn btn-info" %></p>
+		<p class="follow-user-show"><%= link_to "自分がしたMetoo一覧" ,index_public_metoo_path, class: "btn btn-info" %></p>
 
-				<p class="text1-user-show"><%= link_to "→登録情報を変更する" ,edit_public_user_path(@user.id) %></p>
+		<p class="text1-user-show"><%= link_to "→登録情報を変更する" ,edit_public_user_path(@user.id) %></p>
 
-				<table class="table-borderless user-table-show">
-					<tr>
-						<th class="user-th-show">Questions</th>
-						<th class="user-th-show">Answers</th>
-						<th></th>
-					</tr>
-					<% @answers.each do |answer| %>
-					<tr>
-						<td class="user-td-show">Q,<%= answer.question.title %></td>
-						<td class="user-td-show">A,<%= answer.body %></td>
-						<td class="user-td-show"><%= link_to "編集する" ,edit_public_question_answer_path(answer.question.id,answer.id), class: "btn btn-primary col-xs-11 btn-sm" %></td>
-						<td class="user-td-show"><%= link_to "消去する" ,public_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} , class: "btn btn-danger col-xs-11 btn-sm" %></td>
-						<% if answer.metoos.count == 0 %>
-						<td class="user-td-show">0Me too</td>
-						<% else %>
-						<td class="user-td-show"><%= link_to "#{answer.metoos.count}Me too" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
-						<% end %>
-					</tr>
-					<% end %>
-				</table>
-				<div class="paginate">
-        <%= paginate @answers, class: "paginate" %>
-    </div>
+		<table class="table-borderless user-table-show">
+			<tr>
+				<th class="user-th-show">Questions</th>
+				<th class="user-th-show">Answers</th>
+				<th></th>
+			</tr>
+			<% @answers.each do |answer| %>
+			<tr>
+				<td class="user-td-show">Q,<%= answer.question.title %></td>
+				<td class="user-td-show">A,<%= answer.body %></td>
+				<td class="user-td-show"><%= link_to "編集する" ,edit_public_question_answer_path(answer.question.id,answer.id), class: "btn btn-primary col-xs-11 btn-sm" %></td>
+				<td class="user-td-show"><%= link_to "消去する" ,public_question_answer_path(answer.question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} , class: "btn btn-danger col-xs-11 btn-sm" %></td>
+				<% if answer.metoos.count == 0 %>
+				<td class="user-td-show">0Me too</td>
+				<% else %>
+				<td class="user-td-show"><%= link_to "#{answer.metoos.count}Me too" ,public_question_answer_metoo_path(answer.question.id,answer.id,answer.metoos.first.id) %></td>
+				<% end %>
+			</tr>
+			<% end %>
+		</table>
+		<div class="paginate">
+			<%= paginate @answers, class: "paginate" %>
+		</div>
 
-				<div>
-					<p class="withdraw-user-show"><%= link_to "→退会する",withdraw_public_user_path	,class: "btn btn-warning" %></p>
-				</div>
+		<div>
+			<p class="withdraw-user-show"><%= link_to "→退会する",withdraw_public_user_path	,class: "btn btn-warning" %></p>
+		</div>
 
-			</div>
+	</div>
 
 	<% else %>
 	<div class="user-box">
@@ -69,25 +69,16 @@
 			<tr>
 				<td class="user-td-show">Q,<%= answer.question.title %></td>
 				<td class="user-td-show">A,<%= answer.body %></td>
-				<td class="user-td-show">
-					<% if answer.me_tooed_by?(current_user) %>
-					<%= link_to public_question_answer_metoo_path(answer.question.id,answer.id), method: :delete do %>
-					<i class="far fa-handshake" aria-hidden="true" style="color: red;"></i>
+				<td id="metoo-<%= answer.id %>" class="user-td-show">
+					<%= render partial: "metoo", locals: { answer: answer } %>
 					<%= answer.metoos.count %>Me too
-					<% end %>
-					<% else %>
-					<%= link_to public_question_answer_metoos_path(answer.question.id,answer.id), method: :post do %>
-					<i class="far fa-handshake" aria-hidden="true"></i>
-					<%= answer.metoos.count %>Me too
-					<% end %>
-					<% end %>
 				</td>
 			</tr>
 			<% end %>
 		</table>
 		<div class="paginate">
-        <%= paginate @answers, class: "paginate" %>
-    </div>
+			<%= paginate @answers, class: "paginate" %>
+		</div>
 
 		<% end %>
 		<% else %>
@@ -114,7 +105,7 @@
 			<% end %>
 		</table>
 		<div class="paginate">
-        <%= paginate @answers, class: "paginate" %>
-    </div>
+			<%= paginate @answers, class: "paginate" %>
+		</div>
 		<% end %>
 	</div>

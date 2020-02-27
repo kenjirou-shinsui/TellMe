@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
 
     def follower
         @all_relationships = Relationship.where(follow_id:current_user.id)
-      @relationships = Relationship.where(follow_id:current_user.id).page(params[:page]).per(10).reverse_order
+        @relationships = Relationship.where(follow_id:current_user.id).page(params[:page]).per(10).reverse_order
     end
 
     def update

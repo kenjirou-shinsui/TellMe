@@ -29,8 +29,10 @@
       <% end %>
     </tr>
     <% end %>
-    <%= paginate @users, class: "paginate" %>
   </table>
+  <div class="paginate">
+        <%= paginate @users, class: "paginate" %>
+    </div>
 </div>
 <% elsif @model == "2" %>
 
@@ -59,8 +61,10 @@
             <% end %>
         </tr>
         <% end %>
-        <%= paginate @questions, class: "paginate" %>
     </table>
+    <div class="paginate">
+        <%= paginate @all_questions, class: "paginate" %>
+    </div>
 
     <% else %>
     <div class="question-box-index">
@@ -74,9 +78,10 @@
                 <td class="question-td-index">回答ユーザー数：<%= question.answers.count %></td>
             </tr>
             <% end %>
-            <%= paginate @questions, class: "paginate" %>
         </table>
-
+       <div class="paginate">
+        <%= paginate @all_questions, class: "paginate" %>
+    </div>
         <% end %>
     </div>
     <% elsif @model == "3" %>
@@ -118,9 +123,11 @@
             <td class="hope_question-td-index"><%= link_to "投稿を消去する",public_hope_question_path(hope_question.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
             <% end %>
         </tr>
-        <%= paginate @hope_questions, class: "paginate" %>
         <% end %>
     </table>
+    <div class="paginate">
+        <%= paginate @hope_questions, class: "paginate" %>
+    </div>
 
     <% else %>
     <div class="question-box-index">
@@ -137,7 +144,9 @@
             </tr>
             <% end %>
         </table>
+        <div class="paginate">
         <%= paginate @hope_questions, class: "paginate" %>
+    </div>
         <% end %>
     </div>
 
