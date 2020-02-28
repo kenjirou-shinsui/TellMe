@@ -63,7 +63,7 @@
         <% end %>
     </table>
     <div class="paginate">
-        <%= paginate @all_questions, class: "paginate" %>
+        <%= paginate @questions, class: "paginate" %>
     </div>
 
     <% else %>
@@ -80,15 +80,12 @@
             <% end %>
         </table>
        <div class="paginate">
-        <%= paginate @all_questions, class: "paginate" %>
+        <%= paginate @questions, class: "paginate" %>
     </div>
         <% end %>
     </div>
     <% elsif @model == "3" %>
 
-
-
-    
 <% if user_signed_in? %>
 <div class="question-box-index">
     <h1 class="hope_question-title-index">Hope Questions</h1>
