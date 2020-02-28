@@ -11,5 +11,4 @@
 		<td class="answers-td"><%= link_to "delete" ,admin_question_answer_path(@question.id,answer.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
 	</tr>
 	<% end %>
-	<%= paginate @answers, class: "paginate" %>
 </table>
