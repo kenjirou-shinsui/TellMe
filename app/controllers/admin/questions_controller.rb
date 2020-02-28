@@ -7,7 +7,7 @@ class Admin::QuestionsController < ApplicationController
     end
 
     def index
-        @questions = Question.page(params[:page]).per(10).reverse_order
+        @questions = Question.page(params[:page]).per(10)
     end
 
     def edit
